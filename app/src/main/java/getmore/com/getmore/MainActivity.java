@@ -8,8 +8,9 @@ import android.support.v4.view.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import getmore.com.getmore.menu.ActionBarHandler;
+import getmore.com.getmore.pageflow.MyPageAdapter;
 import getmore.com.getmore.pageflow.ViewPagerHandler;
+import getmore.com.getmore.pageflow.menu.ActionBarHandler;
 
 
 public class MainActivity extends FragmentActivity {
