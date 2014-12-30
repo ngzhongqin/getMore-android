@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/container"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/search_btn"
+                    android:src="@drawable/search_grey"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/white_border"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                android:layout_width="wrap_content"
+                android:text="My Favorite Shops"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
