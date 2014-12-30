@@ -18,8 +18,22 @@
             android:textSize="18sp"
             android:gravity="center_vertical"
             android:background="@color/white"
-            android:text="ID: BA2121"
+            android:text="ID:"
             android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/spinner_placeholder"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                style="?android:attr/progressBarStyleSmallTitle"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <View
             android:layout_width="0dp"

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import getmore.com.getmore.R;
@@ -27,6 +28,7 @@ public class ActionBarHandler {
         ImageButton friends_btn;
         ImageButton points_btn;
         TextView user_id;
+        LinearLayout spinner_placeholder;
 
     }
 
@@ -38,7 +40,7 @@ public class ActionBarHandler {
     public void restoreActionBar() {
 
 
-
+        setActionBar();
         ActionBarWebService actionBarWebService = new ActionBarWebService(this);
         actionBarWebService.landing_page();
 
@@ -72,9 +74,7 @@ public class ActionBarHandler {
         }
     }
 
-    public void setActionBarHandlerAfterWebServiceCall(String user_id) {
-        this.user_id = user_id;
-
+    public void setActionBar(){
         actionBar = mActivity.getActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayUseLogoEnabled(false);
@@ -87,6 +87,7 @@ public class ActionBarHandler {
         actionBarViewHolder.friends_btn = (ImageButton) cView.findViewById(R.id.friends_btn);
         actionBarViewHolder.points_btn = (ImageButton) cView.findViewById(R.id.points_btn);
         actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
+        actionBarViewHolder.spinner_placeholder = (LinearLayout) cView.findViewById(R.id.spinner_placeholder);
 
         actionBarViewHolder.home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +126,14 @@ public class ActionBarHandler {
 
             }
         });
+        actionBar.setCustomView(cView);
+    }
+
+    public void setActionBarHandlerAfterWebServiceCall(String user_id) {
+        this.user_id = user_id;
+
+        setActionBar();
+        actionBarViewHolder.spinner_placeholder.setVisibility(View.GONE);
         actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
         actionBarViewHolder.user_id.setText("ID: "+user_id);
 
