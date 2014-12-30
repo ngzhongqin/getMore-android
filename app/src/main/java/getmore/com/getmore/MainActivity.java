@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import getmore.com.getmore.menu.ActionBarHandler;
+import getmore.com.getmore.pageflow.ViewPagerHandler;
 
 
 public class MainActivity extends FragmentActivity {
@@ -24,19 +24,15 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         List<Fragment> fragments = getFragments();
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
-        pager = (ViewPager)findViewById(R.id.viewpager);
-        pager.setAdapter(pageAdapter);
-        setPagerOnPageChangeListener();
-
-
-
-        instantiate_action_bar();
-    }
-
-    public void instantiate_action_bar(){
         actionBarHandler = new ActionBarHandler(this, pager);
         actionBarHandler.restoreActionBar();
+        pager = (ViewPager)findViewById(R.id.viewpager);
+        ViewPagerHandler viewPagerHandler = new ViewPagerHandler();
+        viewPagerHandler.setPagerOnPageChangeListener(pager,actionBarHandler);
+        pager.setAdapter(pageAdapter);
     }
+
+
 
     public List<Fragment> getFragments() {
 
@@ -49,39 +45,6 @@ public class MainActivity extends FragmentActivity {
         return fList;
     }
 
-    private void setPagerOnPageChangeListener(){
-        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int index) {
-                Log.d(TAG,"page: "+index);
-                switch (index){
-                    case 0:
-                        actionBarHandler.set_home_btn_active();
-                        break;
-                    case 1:
-                        actionBarHandler.set_friends_btn_active();
-                        break;
-                    case 2:
-                        actionBarHandler.set_points_btn_active();
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-    }
 
 
 }
