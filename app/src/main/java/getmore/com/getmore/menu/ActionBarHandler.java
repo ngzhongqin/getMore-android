@@ -53,6 +53,9 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.i(TAG, "actionBarViewHolder.home_btn.setOnClickListener");
                 Toast.makeText(mActivity.getApplicationContext(), "Home Btn", Toast.LENGTH_SHORT).show();
+                set_home_btn_selected(true);
+                set_friends_btn_selected(false);
+                set_points_btn_selected(false);
 
             }
         });
@@ -63,6 +66,9 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.i(TAG, "actionBarViewHolder.friends_btn.setOnClickListener");
                 Toast.makeText(mActivity.getApplicationContext(), "Friends Btn", Toast.LENGTH_SHORT).show();
+                set_home_btn_selected(false);
+                set_friends_btn_selected(true);
+                set_points_btn_selected(false);
 
             }
         });
@@ -73,11 +79,40 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.i(TAG, "actionBarViewHolder.points_btn.setOnClickListener");
                 Toast.makeText(mActivity.getApplicationContext(), "Points Btn", Toast.LENGTH_SHORT).show();
+                set_home_btn_selected(false);
+                set_friends_btn_selected(false);
+                set_points_btn_selected(true);
 
             }
         });
 
         actionBar.setCustomView(cView);
+    }
+
+
+
+    private void set_home_btn_selected(boolean selected){
+        if(selected){
+            actionBarViewHolder.home_btn.setImageResource(R.drawable.home);
+        }else{
+            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_grey);
+        }
+    }
+
+    private void set_friends_btn_selected(boolean selected){
+        if(selected){
+            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends);
+        }else{
+            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_grey);
+        }
+    }
+
+    private void set_points_btn_selected(boolean selected){
+        if(selected){
+            actionBarViewHolder.points_btn.setImageResource(R.drawable.points);
+        }else{
+            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_grey);
+        }
     }
 
 }
