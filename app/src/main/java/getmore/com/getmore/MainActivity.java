@@ -1,59 +1,87 @@
 package getmore.com.getmore;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import getmore.com.getmore.menu.ActionBarHandler;
 
 
-public class MainActivity extends Activity{
-
+public class MainActivity extends FragmentActivity {
+    private String TAG = "MainActivity";
+    private MyPageAdapter pageAdapter;
     private ActionBarHandler actionBarHandler;
+    private ViewPager pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        List<Fragment> fragments = getFragments();
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
+        pager = (ViewPager)findViewById(R.id.viewpager);
+        pager.setAdapter(pageAdapter);
+        setPagerOnPageChangeListener();
+
+
 
         instantiate_action_bar();
     }
 
     public void instantiate_action_bar(){
-        actionBarHandler = new ActionBarHandler(this);
+        actionBarHandler = new ActionBarHandler(this, pager);
         actionBarHandler.restoreActionBar();
     }
 
+    public List<Fragment> getFragments() {
 
-    /*
-    public void restoreActionBar() {
-     //   ActionBar actionBar = getActionBar();
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-//        actionBar.setDisplayShowTitleEnabled(true);
-//        actionBar.setTitle(mTitle);
+        List<Fragment> fList = new ArrayList<Fragment>();
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayUseLogoEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayOptions(actionBar.DISPLAY_SHOW_CUSTOM);
-        View cView = getLayoutInflater().inflate(R.layout.actionbar, null);
-        actionBar.setCustomView(cView);
-    }*/
+        fList.add(MyFragment.newInstance("1"));
+        fList.add(MyFragment.newInstance("2"));
+        fList.add(MyFragment.newInstance("3"));
 
+        return fList;
+    }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-//            // Only show items in the action bar relevant to this screen
-//            // if the drawer is not showing. Otherwise, let the drawer
-//            // decide what to show in the action bar.
-//            //getMenuInflater().inflate(R.menu.main, menu);
-//            restoreActionBar();
-//            return true;
-//        }
-//        return super.onCreateOptionsMenu(menu);
-//    }
+    private void setPagerOnPageChangeListener(){
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int index) {
+                Log.d(TAG,"page: "+index);
+                switch (index){
+                    case 0:
+                        actionBarHandler.set_home_btn_active();
+                        break;
+                    case 1:
+                        actionBarHandler.set_friends_btn_active();
+                        break;
+                    case 2:
+                        actionBarHandler.set_points_btn_active();
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+    }
+
 
 }

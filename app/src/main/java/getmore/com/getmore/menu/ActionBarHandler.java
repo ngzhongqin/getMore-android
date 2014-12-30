@@ -2,6 +2,8 @@ package getmore.com.getmore.menu;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,6 +21,7 @@ public class ActionBarHandler {
     private View cView;
     private ActionBarViewHolder actionBarViewHolder;
     private ActionBar actionBar;
+    private ViewPager pager;
 
     class ActionBarViewHolder{
         ImageButton home_btn;
@@ -29,9 +32,11 @@ public class ActionBarHandler {
 
     }
 
-    public ActionBarHandler(Activity mActivity){
+    public ActionBarHandler(FragmentActivity mActivity, ViewPager pager){
+        this.pager=pager;
         this.mActivity=mActivity;
         actionBarViewHolder = new ActionBarViewHolder();
+
     }
 
     public void restoreActionBar() {
@@ -91,9 +96,8 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.d(TAG, "actionBarViewHolder.home_btn.setOnClickListener");
 //                Toast.makeText(mActivity.getApplicationContext(), "Home Btn", Toast.LENGTH_SHORT).show();
-                set_home_btn_selected(true);
-                set_friends_btn_selected(false);
-                set_points_btn_selected(false);
+                set_home_btn_active();
+                pager.setCurrentItem(0);
 
             }
         });
@@ -104,9 +108,8 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.d(TAG, "actionBarViewHolder.friends_btn.setOnClickListener");
 //                Toast.makeText(mActivity.getApplicationContext(), "Friends Btn", Toast.LENGTH_SHORT).show();
-                set_home_btn_selected(false);
-                set_friends_btn_selected(true);
-                set_points_btn_selected(false);
+                set_friends_btn_active();
+                pager.setCurrentItem(1);
 
             }
         });
@@ -117,13 +120,30 @@ public class ActionBarHandler {
             public void onClick(final View v) {
                 Log.d(TAG, "actionBarViewHolder.points_btn.setOnClickListener");
 //                Toast.makeText(mActivity.getApplicationContext(), "Points Btn", Toast.LENGTH_SHORT).show();
-                set_home_btn_selected(false);
-                set_friends_btn_selected(false);
-                set_points_btn_selected(true);
+                set_points_btn_active();
+                pager.setCurrentItem(2);
 
             }
         });
         actionBar.setCustomView(cView);
+    }
+
+    public void set_home_btn_active(){
+        set_home_btn_selected(true);
+        set_friends_btn_selected(false);
+        set_points_btn_selected(false);
+    }
+
+    public void set_friends_btn_active(){
+        set_home_btn_selected(false);
+        set_friends_btn_selected(true);
+        set_points_btn_selected(false);
+    }
+
+    public void set_points_btn_active(){
+        set_home_btn_selected(false);
+        set_friends_btn_selected(false);
+        set_points_btn_selected(true);
     }
 
     public void setActionBarHandlerAfterWebServiceCall(String user_id) {
