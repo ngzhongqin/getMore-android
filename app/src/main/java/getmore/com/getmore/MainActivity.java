@@ -32,6 +32,7 @@ public class MainActivity extends FragmentActivity {
         ViewPagerHandler viewPagerHandler = new ViewPagerHandler();
         viewPagerHandler.setPagerOnPageChangeListener(pager,actionBarHandler);
         pager.setAdapter(pageAdapter);
+        actionBarHandler.setPager(pager);
     }
 
 

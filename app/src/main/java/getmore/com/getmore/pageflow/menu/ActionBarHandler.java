@@ -23,6 +23,11 @@ public class ActionBarHandler {
     private ActionBar actionBar;
     private ViewPager pager;
 
+    public void setPager(ViewPager pager) {
+        this.pager = pager;
+        setMenuButtonsWithViewPager();
+    }
+
     class ActionBarViewHolder{
         ImageButton home_btn;
         ImageButton friends_btn;
@@ -90,7 +95,12 @@ public class ActionBarHandler {
         actionBarViewHolder.points_btn = (ImageButton) cView.findViewById(R.id.points_btn);
         actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
         actionBarViewHolder.spinner_placeholder = (LinearLayout) cView.findViewById(R.id.spinner_placeholder);
+        setMenuButtonsWithViewPager();
 
+        actionBar.setCustomView(cView);
+    }
+
+    public void setMenuButtonsWithViewPager(){
         actionBarViewHolder.home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -125,7 +135,6 @@ public class ActionBarHandler {
 
             }
         });
-        actionBar.setCustomView(cView);
     }
 
     public void set_home_btn_active(){
