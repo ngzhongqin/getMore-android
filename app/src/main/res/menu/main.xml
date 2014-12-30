@@ -1,16 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity" >
-    <item android:id="@+id/home"
-        android:title="@string/home"
-        android:icon="@drawable/home"
-        android:showAsAction="always" />
-    <item android:id="@+id/friends"
-        android:title="@string/friends"
-        android:icon="@drawable/friends"
-        android:showAsAction="always" />
-    <item android:id="@+id/points"
-        android:title="@string/points"
-        android:icon="@drawable/points"
-        android:showAsAction="always" />
 </menu>
