@@ -18,10 +18,7 @@ public class ActionBarHandler {
     public Activity mActivity;
     private View cView;
     private ActionBarViewHolder actionBarViewHolder;
-    private String user_id;
     private ActionBar actionBar;
-
-
 
     class ActionBarViewHolder{
         ImageButton home_btn;
@@ -130,13 +127,9 @@ public class ActionBarHandler {
     }
 
     public void setActionBarHandlerAfterWebServiceCall(String user_id) {
-        this.user_id = user_id;
-
         setActionBar();
         actionBarViewHolder.spinner_placeholder.setVisibility(View.GONE);
-        actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
         actionBarViewHolder.user_id.setText("ID: "+user_id);
-
 
         actionBar.setCustomView(cView);
     }
