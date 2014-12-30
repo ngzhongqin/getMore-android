@@ -54,7 +54,7 @@ public class ActionBarHandler {
 
     private void set_home_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.home_btn.setImageResource(R.drawable.home);
+            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_u);
         }else{
             actionBarViewHolder.home_btn.setImageResource(R.drawable.home_grey);
         }
@@ -62,7 +62,7 @@ public class ActionBarHandler {
 
     private void set_friends_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends);
+            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_u);
         }else{
             actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_grey);
         }
@@ -70,7 +70,7 @@ public class ActionBarHandler {
 
     private void set_points_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.points_btn.setImageResource(R.drawable.points);
+            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_u);
         }else{
             actionBarViewHolder.points_btn.setImageResource(R.drawable.points_grey);
         }
