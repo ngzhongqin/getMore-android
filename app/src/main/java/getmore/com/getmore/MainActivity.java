@@ -12,7 +12,7 @@ import getmore.com.getmore.menu.ActionBarHandler;
 
 public class MainActivity extends Activity{
 
-
+    private ActionBarHandler actionBarHandler;
     private CharSequence mTitle;
 
     @Override
@@ -21,7 +21,11 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
 
         mTitle = getTitle();
-        ActionBarHandler actionBarHandler = new ActionBarHandler(this);
+        instantiate_action_bar();
+    }
+
+    public void instantiate_action_bar(){
+        actionBarHandler = new ActionBarHandler(this);
         actionBarHandler.restoreActionBar();
     }
 
