@@ -24,7 +24,7 @@ public class ActionBarWebService {
 
         HashMap<String, Object> params = new HashMap<String, Object>();
 
-        ParseCloud.callFunctionInBackground("landing_page", params, new FunctionCallback<HashMap<String, Object>>() {
+        ParseCloud.callFunctionInBackground("cx_landing_page", params, new FunctionCallback<HashMap<String, Object>>() {
             public void done(HashMap<String, Object> result, ParseException e) {
                 if (e == null) {
                     Log.i(TAG, "landing_page: okay");
