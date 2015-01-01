@@ -1,4 +1,4 @@
-package getmore.com.getmore.util.assetSetter;
+package getmore.com.getmore.util.assetHandler;
 
 import android.util.Log;
 import android.view.View;
@@ -7,10 +7,10 @@ import android.widget.FrameLayout;
 /**
  * Created by zhongqinng on 1/1/15.
  */
-public class FrameLayoutSetter {
+public class FrameLayoutHandler {
     private String TAG = "FrameLayoutSetter";
 
-    public FrameLayoutSetter(){};
+    public FrameLayoutHandler(){};
 
     public void setFrameLayoutVisible(FrameLayout frameLayout,boolean visible){
         if(visible){

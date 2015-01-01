@@ -1,4 +1,4 @@
-package getmore.com.getmore.util.assetSetter;
+package getmore.com.getmore.util.assetHandler;
 
 import android.util.Log;
 import android.widget.ImageButton;
@@ -6,10 +6,10 @@ import android.widget.ImageButton;
 /**
  * Created by zhongqinng on 1/1/15.
  */
-public class ImageButtonSetter {
+public class ImageButtonHandler {
     private String TAG = "ImageButtonSetter";
 
-    public ImageButtonSetter(){
+    public ImageButtonHandler(){
 
     }
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import getmore.com.getmore.R;
-import getmore.com.getmore.util.assetSetter.AssetSetter;
+import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 public class HomeFragment extends Fragment {
@@ -17,7 +17,7 @@ public class HomeFragment extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     //private ViewHolder viewHolder;
     private View v;
-    private AssetSetter assetSetter;
+    private AssetHandler assetHandler;
     private HomeWebService homeWebService;
     private SearchShopResults searchShopResults;
 
@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         String message = getArguments().getString(EXTRA_MESSAGE);
         v = inflater.inflate(R.layout.home_f, container, false);
-        assetSetter = new AssetSetter();
+        assetHandler = new AssetHandler(getActivity());
         homeWebService=new HomeWebService(this);
         searchShopResults=new SearchShopResults(getActivity(),v,homeWebService);
 

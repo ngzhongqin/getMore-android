@@ -1,4 +1,4 @@
-package getmore.com.getmore.util.assetSetter;
+package getmore.com.getmore.util.assetHandler;
 
 import android.util.Log;
 import android.view.View;
@@ -7,10 +7,10 @@ import android.widget.TextView;
 /**
  * Created by zhongqinng on 1/1/15.
  */
-public class TextViewSetter {
+public class TextViewHandler {
     private String TAG = "TextViewSetter";
 
-    public TextViewSetter(){};
+    public TextViewHandler(){};
 
     public void setTextViewVisible(TextView textView,boolean visible){
         if(visible){

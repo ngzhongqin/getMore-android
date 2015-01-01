@@ -82,11 +82,12 @@
                     android:layout_height="match_parent">
 
                     <EditText
+                        android:id="@+id/search_edit_text"
                         android:layout_width="match_parent"
                         android:hint="Search (Shop/Product/Service)"
                         android:textSize="18sp"
                         android:background="@drawable/edittext_modified_states"
-                        android:inputType="text|textCapSentences"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:maxLength ="30"
                         android:scrollHorizontally="false"

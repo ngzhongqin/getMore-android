@@ -1,4 +1,4 @@
-package getmore.com.getmore.util.assetSetter;
+package getmore.com.getmore.util.assetHandler;
 
 import android.util.Log;
 import android.view.View;
@@ -7,10 +7,10 @@ import android.widget.LinearLayout;
 /**
  * Created by zhongqinng on 1/1/15.
  */
-public class LinearLayoutSetter {
+public class LinearLayoutHandler {
     private String TAG = "LinearLayoutSetter";
 
-    public LinearLayoutSetter(){};
+    public LinearLayoutHandler(){};
 
     public void setLinearLayoutVisible(LinearLayout linearLayout,boolean visible){
         if(visible){

@@ -2,7 +2,10 @@ package getmore.com.getmore.fragment.home;
 
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -11,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import getmore.com.getmore.R;
-import getmore.com.getmore.util.assetSetter.AssetSetter;
+import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 /**
@@ -22,7 +25,7 @@ public class SearchShopResults {
     private FragmentActivity fragmentActivity;
     private View v;
     private ViewHolder viewHolder;
-    private AssetSetter assetSetter;
+    private AssetHandler assetHandler;
     private HomeWebService homeWebService;
     private SearchShopAdapter searchShopAdapter;
     private ArrayList<ShopVO> searchShopVOs;
@@ -36,14 +39,14 @@ public class SearchShopResults {
         LinearLayout search_shop_container;
         TextView search_title;
         LinearLayout search_spinner_placeholder;
-
+        EditText search_edit_text;
     }
 
     public SearchShopResults(FragmentActivity fragmentActivity, View v,HomeWebService homeWebService){
         this.fragmentActivity=fragmentActivity;
         this.v=v;
         this.viewHolder=new ViewHolder();
-        this.assetSetter = new AssetSetter();
+        this.assetHandler = new AssetHandler(fragmentActivity);
         this.homeWebService=homeWebService;
 
         viewHolder.search_box_container = (FrameLayout) v.findViewById(R.id.search_box_container);
@@ -55,11 +58,14 @@ public class SearchShopResults {
         viewHolder.search_title = (TextView) v.findViewById(R.id.search_title);
         viewHolder.search_spinner_placeholder = (LinearLayout) v.findViewById(R.id.search_spinner_placeholder);
 
-        assetSetter.frameLayoutSetter.setFrameLayoutVisible(viewHolder.search_box_container,false);
-        assetSetter.linearLayoutSetter.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
-        assetSetter.textViewSetter.setTextViewVisible(viewHolder.search_title,false);
+        viewHolder.search_edit_text = assetHandler.editTextHandler.set(v,R.id.search_edit_text);
+
+        assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container,false);
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
+        assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,false);
         setSearchButtonOnClickListener();
         setSearchHintButtonOnClickListener();
+        setEditTextAction();
     };
 
     private void setSearchButtonOnClickListener(){
@@ -68,12 +74,12 @@ public class SearchShopResults {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "setSearchButtonOnClickListener");
-                if(assetSetter.frameLayoutSetter.checkFrameLayoutVisible(viewHolder.search_box_container)){
+                if(assetHandler.frameLayoutHandler.checkFrameLayoutVisible(viewHolder.search_box_container)){
                     Log.d(TAG, "setSearchButtonOnClickListener search_box_container is visible");
                     get_shop_search();
                 }else {
-                    assetSetter.frameLayoutSetter.setFrameLayoutVisible(viewHolder.search_box_container, true);
-                    assetSetter.linearLayoutSetter.setLinearLayoutVisible(viewHolder.search_hint_container, false);
+                    assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, true);
+                    assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_hint_container, false);
                 }
             }
         });
@@ -84,25 +90,21 @@ public class SearchShopResults {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "setSearchHintButtonOnClickListener");
-                assetSetter.frameLayoutSetter.setFrameLayoutVisible(viewHolder.search_box_container, true);
-                assetSetter.linearLayoutSetter.setLinearLayoutVisible(viewHolder.search_hint_container, false);
+                assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, true);
+                assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_hint_container, false);
             }
         });
     }
 
     private void get_shop_search(){
-        assetSetter.frameLayoutSetter.setFrameLayoutVisible(viewHolder.search_box_container, false);
-        assetSetter.textViewSetter.setTextViewVisible(viewHolder.search_title,true);
-        assetSetter.linearLayoutSetter.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
+        assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, false);
+        assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
         homeWebService.get_shop_search(getSearchTerms());
     }
 
     private ArrayList<String> getSearchTerms(){
-        String searchTerm = "shoe";
-        ArrayList<String> returnArrayList = new ArrayList<String>();
-        returnArrayList.add(searchTerm);
-        searchTerm = "footwear";
-        returnArrayList.add(searchTerm);
+        ArrayList<String> returnArrayList = assetHandler.editTextHandler.getStringsFromEditText(viewHolder.search_edit_text);
         return returnArrayList;
     }
 
@@ -123,8 +125,27 @@ public class SearchShopResults {
             i++;
         }
 
-        assetSetter.linearLayoutSetter.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
+        assetHandler.editTextHandler.clearText(viewHolder.search_edit_text);
         Log.d(TAG,"create_search_shop_list end");
+    }
+
+    private void setEditTextAction(){
+        if(viewHolder!=null){
+            if(viewHolder.search_edit_text!=null){
+                viewHolder.search_edit_text.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            get_shop_search();
+                            assetHandler.keyBoardHandler.hide_keyboard();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+            }
+        }
 
     }
 }
