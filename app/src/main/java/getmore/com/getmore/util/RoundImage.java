@@ -15,29 +15,35 @@ public class RoundImage{
 
 
     public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-        Log.i(TAG,"getRoundedShape-> inputBitmapHeight: "+scaleBitmapImage.getHeight()+
-                    " inputBitmapWidth: "+scaleBitmapImage.getWidth());
 
         int targetWidth = 125;
         int targetHeight = 125;
         Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
-                targetHeight,Bitmap.Config.ARGB_8888);
+                targetHeight, Bitmap.Config.ARGB_8888);
 
-        Canvas canvas = new Canvas(targetBitmap);
-        Path path = new Path();
-        path.addCircle(((float) targetWidth - 1) / 2,
-                ((float) targetHeight - 1) / 2,
-                (Math.min(((float) targetWidth),
-                        ((float) targetHeight)) / 2),
-                Path.Direction.CCW);
+        try {
+            Log.i(TAG, "getRoundedShape-> inputBitmapHeight: " + scaleBitmapImage.getHeight() +
+                    " inputBitmapWidth: " + scaleBitmapImage.getWidth());
 
-        canvas.clipPath(path);
-        Bitmap sourceBitmap = scaleBitmapImage;
-        canvas.drawBitmap(sourceBitmap,
-                new Rect(0, 0, sourceBitmap.getWidth(),
-                        sourceBitmap.getHeight()),
-                new Rect(0, 0, targetWidth,
-                        targetHeight), null);
+            Canvas canvas = new Canvas(targetBitmap);
+            Path path = new Path();
+            path.addCircle(((float) targetWidth - 1) / 2,
+                    ((float) targetHeight - 1) / 2,
+                    (Math.min(((float) targetWidth),
+                            ((float) targetHeight)) / 2),
+                    Path.Direction.CCW);
+
+            canvas.clipPath(path);
+            Bitmap sourceBitmap = scaleBitmapImage;
+            canvas.drawBitmap(sourceBitmap,
+                    new Rect(0, 0, sourceBitmap.getWidth(),
+                            sourceBitmap.getHeight()),
+                    new Rect(0, 0, targetWidth,
+                            targetHeight), null);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return targetBitmap;
     }
 

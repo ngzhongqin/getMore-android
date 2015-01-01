@@ -8,10 +8,12 @@ public class AssetSetter {
     public FrameLayoutSetter frameLayoutSetter;
     public ImageButtonSetter imageButtonSetter;
     public LinearLayoutSetter linearLayoutSetter;
+    public TextViewSetter textViewSetter;
 
     public AssetSetter(){
         frameLayoutSetter=new FrameLayoutSetter();
         imageButtonSetter=new ImageButtonSetter();
         linearLayoutSetter=new LinearLayoutSetter();
+        textViewSetter=new TextViewSetter();
     }
 }
