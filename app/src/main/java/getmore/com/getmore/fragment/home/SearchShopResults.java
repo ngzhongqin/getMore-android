@@ -11,10 +11,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.parse.ParseGeoPoint;
+
 import java.util.ArrayList;
 
 import getmore.com.getmore.R;
 import getmore.com.getmore.util.assetHandler.AssetHandler;
+import getmore.com.getmore.util.location.LocationHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 /**
@@ -75,7 +78,7 @@ public class SearchShopResults {
                 Log.d(TAG, "setSearchButtonOnClickListener");
                 if(assetHandler.frameLayoutHandler.checkFrameLayoutVisible(viewHolder.search_box_container)){
                     Log.d(TAG, "setSearchButtonOnClickListener search_box_container is visible");
-                    get_shop_search();
+                    get_shop_search(true);
                 }else {
                     assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, true);
                     assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_hint_container, false);
@@ -95,11 +98,12 @@ public class SearchShopResults {
         });
     }
 
-    private void get_shop_search(){
+    private void get_shop_search(boolean sortByMember){
+        ParseGeoPoint geoPoint = getCurrentLocation();
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
         assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
-        homeWebService.get_shop_search(getSearchTerms());
+        homeWebService.get_shop_search(getSearchTerms(),sortByMember,geoPoint);
         assetHandler.keyBoardHandler.hide_keyboard();
     }
 
@@ -137,7 +141,7 @@ public class SearchShopResults {
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                         if (actionId == EditorInfo.IME_ACTION_DONE) {
-                            get_shop_search();
+                            get_shop_search(true);
 
                             return true;
                         }
@@ -146,6 +150,11 @@ public class SearchShopResults {
                 });
             }
         }
+    }
 
+    private ParseGeoPoint getCurrentLocation(){
+        LocationHandler locationHandler = new LocationHandler();
+        ParseGeoPoint location = locationHandler.getLastKnownLocation(this.fragmentActivity);
+        return location;
     }
 }

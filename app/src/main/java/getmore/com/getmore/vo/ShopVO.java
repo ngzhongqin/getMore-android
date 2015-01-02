@@ -95,7 +95,7 @@ public class ShopVO {
     }
 
     public void setLocation(ParseGeoPoint location) {
-        Log.i(TAG,"location.getLatitude: "+location.getLatitude()+"location.getLongitude:"+location.getLongitude());
+//        Log.i(TAG,"location.getLatitude: "+location.getLatitude()+"location.getLongitude:"+location.getLongitude());
         this.location = location;
     }
 }

@@ -31,7 +31,7 @@ public class HomeWebService {
         this.jsonHandler=new JsonHandler();
     }
 
-    public void get_shop_search(ArrayList<String> search_terms) {
+    public void get_shop_search(ArrayList<String> search_terms,boolean sortByMember, ParseGeoPoint geoPoint) {
         HashMap<String, Object> params = new HashMap<String, Object>();
         JSONArray searchTermsJSON = new JSONArray();
         int i =0;
@@ -46,6 +46,15 @@ public class HomeWebService {
                 e.printStackTrace();
             }
             i++;
+        }
+        if(geoPoint!=null){
+            params.put("location",geoPoint);
+        }
+
+        if(sortByMember){
+            params.put("sortBy","member");
+        }else{
+            params.put("sortBy","location");
         }
 
         params.put("search_terms",searchTermsJSON);

@@ -38,7 +38,6 @@ public class HomeFragment extends Fragment {
         homeWebService=new HomeWebService(this);
         searchShopResults=new SearchShopResults(getActivity(),v,homeWebService);
 
-
         return v;
     }
 
