@@ -49,15 +49,6 @@ public class SearchShopResults {
         this.assetHandler = new AssetHandler(fragmentActivity);
         this.homeWebService=homeWebService;
 
-//        viewHolder.search_box_container = (FrameLayout) v.findViewById(R.id.search_box_container);
-//        viewHolder.search_hint_container = (LinearLayout) v.findViewById(R.id.search_hint_container);
-//        viewHolder.search_btn = (ImageButton) v.findViewById(R.id.search_btn);
-//        viewHolder.search_hint_btn = (ImageButton) v.findViewById(R.id.search_hint_btn);
-//        viewHolder.search_shop_list = (LinearLayout) v.findViewById(R.id.search_shop_list);
-//        viewHolder.search_shop_container = (LinearLayout) v.findViewById(R.id.search_shop_container);
-//        viewHolder.search_title = (TextView) v.findViewById(R.id.search_title);
-//        viewHolder.search_spinner_placeholder = (LinearLayout) v.findViewById(R.id.search_spinner_placeholder);
-
         viewHolder.search_hint_btn = assetHandler.imageButtonHandler.set(v,R.id.search_hint_btn);
         viewHolder.search_btn = assetHandler.imageButtonHandler.set(v,R.id.search_btn);
         viewHolder.search_title = assetHandler.textViewHandler.set(v,R.id.search_title);
@@ -120,7 +111,7 @@ public class SearchShopResults {
         Log.d(TAG,"create_search_shop_list start");
         this.searchShopVOs=searchShopVOs;
         viewHolder.search_shop_list.removeAllViews();
-        searchShopAdapter = new SearchShopAdapter(this.fragmentActivity, R.id.home_i_searchshop_panel_content);
+        searchShopAdapter = new SearchShopAdapter(this.fragmentActivity,this.fragmentActivity, R.id.home_i_searchshop_panel_content);
         for (ShopVO item : this.searchShopVOs) {
             searchShopAdapter.add(item);
         }

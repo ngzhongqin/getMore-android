@@ -13,6 +13,7 @@ public class AssetHandler {
     public TextViewHandler textViewHandler;
     public EditTextHandler editTextHandler;
     public KeyBoardHandler keyBoardHandler;
+    public ImageViewHandler imageViewHandler;
 
     public AssetHandler(FragmentActivity fragmentActivity){
         frameLayoutHandler =new FrameLayoutHandler();
@@ -21,5 +22,6 @@ public class AssetHandler {
         textViewHandler =new TextViewHandler();
         editTextHandler=new EditTextHandler();
         keyBoardHandler=new KeyBoardHandler(fragmentActivity);
+        imageViewHandler=new ImageViewHandler();
     }
 }

@@ -1,6 +1,7 @@
 package getmore.com.getmore.fragment.home;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import getmore.com.getmore.R;
-import getmore.com.getmore.background.DownloadRoundImage;
+import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 
@@ -23,6 +24,7 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
     private static final String TAG = "ShopAdapter";
     private ViewHolder vh;
     private Context context;
+    private AssetHandler assetHandler;
     static class ViewHolder {
         TextView name;
         TextView short_desc;
@@ -32,10 +34,11 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
 
     private final LayoutInflater mLayoutInflater;
 
-    public SearchShopAdapter(final Context context, final int textViewResourceId) {
+    public SearchShopAdapter(FragmentActivity fragmentActivity, final Context context, final int textViewResourceId) {
         super(context, textViewResourceId);
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
+        assetHandler = new AssetHandler(fragmentActivity);
     }
 
     @Override
@@ -44,17 +47,20 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.home_i_searchshop, parent, false);
             vh = new ViewHolder();
-            vh.name = (TextView) convertView.findViewById(R.id.name);
-            vh.short_desc = (TextView) convertView.findViewById(R.id.short_desc);
-            vh.photo = (ImageView) convertView.findViewById(R.id.photo);
+
+            vh.name = assetHandler.textViewHandler.set(convertView,R.id.name);
+            vh.short_desc = assetHandler.textViewHandler.set(convertView,R.id.short_desc);
+            vh.photo = assetHandler.imageViewHandler.set(convertView,R.id.photo);
+
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
-        vh.name.setText(getItem(position).getName());
-        vh.short_desc.setText(getItem(position).getShort_desc());
-        new DownloadRoundImage(vh.photo).execute(getItem(position).getSmall_pict_url());
-
+        if(getItem(position)!=null) {
+            assetHandler.textViewHandler.setText(vh.name, getItem(position).getName());
+            assetHandler.textViewHandler.setText(vh.short_desc, getItem(position).getShort_desc());
+            assetHandler.imageViewHandler.setRoundImage(vh.photo,getItem(position).getSmall_pict_url());
+        }
         return convertView;
     }
 }

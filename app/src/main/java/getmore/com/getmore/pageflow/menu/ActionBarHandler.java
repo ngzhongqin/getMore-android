@@ -63,30 +63,24 @@ public class ActionBarHandler {
     private void set_home_btn_selected(boolean selected){
         if(selected){
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.home_btn,R.drawable.home_u);
-//            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_u);
         }else{
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.home_btn,R.drawable.home_grey);
-//            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_grey);
         }
     }
 
     private void set_friends_btn_selected(boolean selected){
         if(selected){
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.friends_btn,R.drawable.friends_u);
-//            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_u);
         }else{
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.friends_btn,R.drawable.friends_grey);
-//            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_grey);
         }
     }
 
     private void set_points_btn_selected(boolean selected){
         if(selected){
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.points_btn,R.drawable.points_u);
-//            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_u);
         }else{
             assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.points_btn,R.drawable.points_grey);
-//            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_grey);
         }
     }
 
@@ -106,12 +100,6 @@ public class ActionBarHandler {
         actionBarViewHolder.user_id = assetHandler.textViewHandler.set(cView,R.id.user_id);
         actionBarViewHolder.spinner_placeholder = assetHandler.linearLayoutHandler.set(cView,R.id.spinner_placeholder);
 
-
-//        actionBarViewHolder.home_btn = (ImageButton) cView.findViewById(R.id.home_btn);
-//        actionBarViewHolder.friends_btn = (ImageButton) cView.findViewById(R.id.friends_btn);
-//        actionBarViewHolder.points_btn = (ImageButton) cView.findViewById(R.id.points_btn);
-//        actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
-//        actionBarViewHolder.spinner_placeholder = (LinearLayout) cView.findViewById(R.id.spinner_placeholder);
         setMenuButtonsWithViewPager();
 
         actionBar.setCustomView(cView);
@@ -176,8 +164,6 @@ public class ActionBarHandler {
         setActionBar();
         assetHandler.linearLayoutHandler.setLinearLayoutVisible( actionBarViewHolder.spinner_placeholder,false);
         assetHandler.textViewHandler.setText(actionBarViewHolder.user_id,"ID: "+user_id);
-//        actionBarViewHolder.spinner_placeholder.setVisibility(View.GONE);
-//        actionBarViewHolder.user_id.setText("ID: "+user_id);
 
         actionBar.setCustomView(cView);
     }
