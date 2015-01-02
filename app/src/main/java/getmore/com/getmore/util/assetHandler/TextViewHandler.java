@@ -52,7 +52,7 @@ public class TextViewHandler {
         }
     }
 
-    public boolean checkTextViewVisible(TextView textView) {
+    public boolean checkVisible(TextView textView) {
         boolean returnBol = false;
         if (textView != null) {
             if (textView.getVisibility() == View.VISIBLE) {

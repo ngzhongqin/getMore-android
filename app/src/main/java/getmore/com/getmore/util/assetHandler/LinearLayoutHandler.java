@@ -50,4 +50,13 @@ public class LinearLayoutHandler {
         }
         return returnBol;
     }
+
+    public void removeAllViews(LinearLayout layout) {
+        try{
+            layout.removeAllViews();
+        }catch (Exception e){
+            Log.e(TAG,"removeAllViews()");
+            e.printStackTrace();
+        }
+    }
 }

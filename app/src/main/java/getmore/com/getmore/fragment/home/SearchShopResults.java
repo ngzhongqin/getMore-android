@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -43,6 +44,9 @@ public class SearchShopResults {
         TextView search_title;
         LinearLayout search_spinner_placeholder;
         EditText search_edit_text;
+        LinearLayout sort_btn_container;
+        Button popular_btn;
+        Button closer_btn;
     }
 
     public SearchShopResults(FragmentActivity fragmentActivity, View v,HomeWebService homeWebService){
@@ -61,12 +65,18 @@ public class SearchShopResults {
         viewHolder.search_hint_container = assetHandler.linearLayoutHandler.set(v,R.id.search_hint_container);
         viewHolder.search_box_container = assetHandler.frameLayoutHandler.set(v,R.id.search_box_container);
         viewHolder.search_edit_text = assetHandler.editTextHandler.set(v,R.id.search_edit_text);
+        viewHolder.sort_btn_container = assetHandler.linearLayoutHandler.set(v,R.id.sort_btn_container);
+        viewHolder.popular_btn = assetHandler.buttonHandler.set(v,R.id.popular_btn);
+        viewHolder.closer_btn = assetHandler.buttonHandler.set(v,R.id.closer_btn);
 
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.sort_btn_container,false);
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container,false);
         assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,false);
         setSearchButtonOnClickListener();
         setSearchHintButtonOnClickListener();
+        setPopularButtonOnClickListener();
+        setCloserButtonOnClickListener();
         setEditTextAction();
     };
 
@@ -98,8 +108,33 @@ public class SearchShopResults {
         });
     }
 
+    private void setPopularButtonOnClickListener(){
+        viewHolder.popular_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "setPopularButtonOnClickListener");
+                assetHandler.buttonHandler.setTextBold(viewHolder.popular_btn,true);
+                assetHandler.buttonHandler.setTextBold(viewHolder.closer_btn,false);
+                get_shop_search(true);
+            }
+        });
+    }
+
+    private void setCloserButtonOnClickListener(){
+        viewHolder.closer_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "setCloserButtonOnClickListener");
+                assetHandler.buttonHandler.setTextBold(viewHolder.closer_btn,true);
+                assetHandler.buttonHandler.setTextBold(viewHolder.popular_btn,false);
+                get_shop_search(false);
+            }
+        });
+    }
+
     private void get_shop_search(boolean sortByMember){
         ParseGeoPoint geoPoint = getCurrentLocation();
+        assetHandler.linearLayoutHandler.removeAllViews(viewHolder.search_shop_list);
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
         assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
@@ -115,7 +150,8 @@ public class SearchShopResults {
     public void create_search_shop_list(ArrayList<ShopVO> searchShopVOs){
         Log.d(TAG,"create_search_shop_list start");
         this.searchShopVOs=searchShopVOs;
-        viewHolder.search_shop_list.removeAllViews();
+        assetHandler.linearLayoutHandler.removeAllViews(viewHolder.search_shop_list);
+//        viewHolder.search_shop_list.removeAllViews();
         searchShopAdapter = new SearchShopAdapter(this.fragmentActivity,this.fragmentActivity, R.id.home_i_searchshop_panel_content);
         for (ShopVO item : this.searchShopVOs) {
             searchShopAdapter.add(item);
@@ -130,7 +166,8 @@ public class SearchShopResults {
         }
 
         assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
-        assetHandler.editTextHandler.clearText(viewHolder.search_edit_text);
+        //assetHandler.editTextHandler.clearText(viewHolder.search_edit_text);
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.sort_btn_container,true);
         Log.d(TAG,"create_search_shop_list end");
     }
 
