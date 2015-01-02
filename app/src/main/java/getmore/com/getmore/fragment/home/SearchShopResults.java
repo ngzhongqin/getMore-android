@@ -100,6 +100,7 @@ public class SearchShopResults {
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
         assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
         homeWebService.get_shop_search(getSearchTerms());
+        assetHandler.keyBoardHandler.hide_keyboard();
     }
 
     private ArrayList<String> getSearchTerms(){
@@ -137,7 +138,7 @@ public class SearchShopResults {
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                         if (actionId == EditorInfo.IME_ACTION_DONE) {
                             get_shop_search();
-                            assetHandler.keyBoardHandler.hide_keyboard();
+
                             return true;
                         }
                         return false;
