@@ -64,8 +64,7 @@ public class HomeWebService {
                 if (e == null) {
                     Log.i(TAG, "cx_get_shop_search: okay");
                     ArrayList<HashMap<String, Object>> objects = (ArrayList<HashMap<String, Object>>) result.get("shops");
-                    ArrayList<HashMap<String, Object>> shop_membership_objects = (ArrayList<HashMap<String, Object>>) result.get("shop_membership");
-                    int i = 0;
+                  int i = 0;
                     int size = 0;
                     if(objects!=null){
                         size = objects.size();
@@ -77,11 +76,9 @@ public class HomeWebService {
                         String short_desc = jsonHandler.getString(objects.get(i),"short_desc");
                         String small_pict_url = jsonHandler.getString(objects.get(i),"small_pict_url");
                         ParseGeoPoint location = jsonHandler.getGeoPoint(objects.get(i),"location");
-
+                        Number number1 = jsonHandler.getNumber( objects.get(i), "number");
                         ShopVO shopVO = new ShopVO(id,name,short_desc,small_pict_url);
-
-                        Number numberOfMembers = getNumberOfMembers(shop_membership_objects,id);
-                        shopVO.setNumberOfMembers(numberOfMembers);
+                        shopVO.setNumberOfMembers(number1);
                         shopVO.setLocation(location);
                         shopVOs.add(shopVO);
                         i++;
@@ -95,7 +92,7 @@ public class HomeWebService {
             }
         });
     }
-
+/*
     private Number getNumberOfMembers(ArrayList<HashMap<String, Object>> shop_membership_objects, String shop_id){
         Number returnNumber = 0;
             if(shop_id!=null){
@@ -122,4 +119,5 @@ public class HomeWebService {
             }
         return returnNumber;
     }
+    */
 }
