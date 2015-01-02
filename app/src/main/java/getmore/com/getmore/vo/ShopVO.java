@@ -2,6 +2,8 @@ package getmore.com.getmore.vo;
 
 import android.util.Log;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by zhongqinng on 2/1/15.
  */
@@ -11,6 +13,8 @@ public class ShopVO {
     private String name;
     private String short_desc;
     private String small_pict_url;
+    private Number numberOfMembers;
+    private String numberOfMembersString;
 
     public ShopVO(String id,
                   String name,
@@ -57,5 +61,29 @@ public class ShopVO {
 
     public void setSmall_pict_url(String small_pict_url) {
         this.small_pict_url = small_pict_url;
+    }
+
+    public void setNumberOfMembers(Number numberOfMembers) {
+        this.numberOfMembers = numberOfMembers;
+    }
+
+    public Number getNumberOfMembers() {
+        return numberOfMembers;
+    }
+
+    public String getNumberOfMembersString() {
+        String returnString = null;
+        DecimalFormat format=new DecimalFormat("###,###,###");
+        if(numberOfMembers!=null){
+            try{
+//                int number = (int) Double.parseDouble(numberOfMembers.toString());
+                String number_string = format.format(numberOfMembers);
+                returnString = "~ "+ number_string+" Members";
+            }catch (Exception e){
+                Log.e(TAG,"getNumberOfMembersString: EXCEPTION: "+e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return returnString;
     }
 }

@@ -29,6 +29,7 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
         TextView name;
         TextView short_desc;
         ImageView photo;
+        TextView number_of_members;
 
     }
 
@@ -51,6 +52,7 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
             vh.name = assetHandler.textViewHandler.set(convertView,R.id.name);
             vh.short_desc = assetHandler.textViewHandler.set(convertView,R.id.short_desc);
             vh.photo = assetHandler.imageViewHandler.set(convertView,R.id.photo);
+            vh.number_of_members = assetHandler.textViewHandler.set(convertView,R.id.number_of_members);
 
             convertView.setTag(vh);
         } else {
@@ -60,6 +62,7 @@ public class SearchShopAdapter extends ArrayAdapter<ShopVO> {
             assetHandler.textViewHandler.setText(vh.name, getItem(position).getName());
             assetHandler.textViewHandler.setText(vh.short_desc, getItem(position).getShort_desc());
             assetHandler.imageViewHandler.setRoundImage(vh.photo,getItem(position).getSmall_pict_url());
+            assetHandler.textViewHandler.setText(vh.number_of_members,getItem(position).getNumberOfMembersString());
         }
         return convertView;
     }
