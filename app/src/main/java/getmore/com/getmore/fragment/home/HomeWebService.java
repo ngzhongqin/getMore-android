@@ -5,6 +5,7 @@ import android.util.Log;
 import com.parse.FunctionCallback;
 import com.parse.ParseCloud;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,11 +67,13 @@ public class HomeWebService {
                         String name = jsonHandler.getString(objects.get(i),"name");
                         String short_desc = jsonHandler.getString(objects.get(i),"short_desc");
                         String small_pict_url = jsonHandler.getString(objects.get(i),"small_pict_url");
+                        ParseGeoPoint location = jsonHandler.getGeoPoint(objects.get(i),"location");
 
                         ShopVO shopVO = new ShopVO(id,name,short_desc,small_pict_url);
 
                         Number numberOfMembers = getNumberOfMembers(shop_membership_objects,id);
                         shopVO.setNumberOfMembers(numberOfMembers);
+                        shopVO.setLocation(location);
                         shopVOs.add(shopVO);
                         i++;
                     }
@@ -92,7 +95,7 @@ public class HomeWebService {
                     int size = shop_membership_objects.size();
                     while (i<size){
                         if(shop_membership_objects.get(i)!=null){
-                            String shop_id_from_object = jsonHandler.getString( shop_membership_objects.get(i), "shopId");
+                            String shop_id_from_object = jsonHandler.getString(shop_membership_objects.get(i), "shopId");
                             if(shop_id_from_object!=null){
                                 if(!shop_id_from_object.toString().isEmpty()){
                                     if(shop_id_from_object.toString().equals(shop_id)){

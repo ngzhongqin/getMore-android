@@ -2,6 +2,8 @@ package getmore.com.getmore.util;
 
 import android.util.Log;
 
+import com.parse.ParseGeoPoint;
+
 import java.util.Date;
 import java.util.HashMap;
 
@@ -50,6 +52,20 @@ public class JsonHandler {
 
         return returnDate;
 
+    }
+
+    public ParseGeoPoint getGeoPoint(HashMap<String,Object> hashMap, String key){
+        ParseGeoPoint returnGeoPoint = null;
+        if(hashMap!=null){
+            Object object = hashMap.get(key);
+            try{
+                returnGeoPoint= (ParseGeoPoint) object;
+            }catch (Exception e){
+                Log.e(TAG,"getGeoPoint EXCEPTION: "+e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return returnGeoPoint;
     }
 }
 

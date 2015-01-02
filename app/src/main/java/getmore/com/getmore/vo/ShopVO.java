@@ -2,6 +2,8 @@ package getmore.com.getmore.vo;
 
 import android.util.Log;
 
+import com.parse.ParseGeoPoint;
+
 import java.text.DecimalFormat;
 
 /**
@@ -15,6 +17,7 @@ public class ShopVO {
     private String small_pict_url;
     private Number numberOfMembers;
     private String numberOfMembersString;
+    private ParseGeoPoint location;
 
     public ShopVO(String id,
                   String name,
@@ -85,5 +88,14 @@ public class ShopVO {
             }
         }
         return returnString;
+    }
+
+    public ParseGeoPoint getLocation() {
+        return location;
+    }
+
+    public void setLocation(ParseGeoPoint location) {
+        Log.i(TAG,"location.getLatitude: "+location.getLatitude()+"location.getLongitude:"+location.getLongitude());
+        this.location = location;
     }
 }
