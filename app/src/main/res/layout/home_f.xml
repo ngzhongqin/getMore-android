@@ -2,11 +2,13 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:weightSum="100"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_weight="90"
+        android:layout_height="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,5 +174,58 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/sort_btn_container"
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:layout_height="0dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/light_grey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="99"
+            android:weightSum="100"
+            android:layout_height="0dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:id="@+id/popular_btn"
+                android:layout_weight="49.9"
+                android:text="More Popular"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="49.9"
+                android:id="@+id/closer_btn"
+                android:text="Closer"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
