@@ -18,6 +18,8 @@ public class ShopVO {
     private Number numberOfMembers;
     private String numberOfMembersString;
     private ParseGeoPoint location;
+    private Number distance;
+    private String distanceString;
 
     public ShopVO(String id,
                   String name,
@@ -51,7 +53,13 @@ public class ShopVO {
     }
 
     public String getShort_desc() {
-        return short_desc;
+        String mShort_desc = null;
+        if(short_desc!=null){
+            if(!short_desc.isEmpty()){
+                mShort_desc = "# "+short_desc;
+            }
+        }
+        return mShort_desc;
     }
 
     public void setShort_desc(String short_desc) {
@@ -97,5 +105,42 @@ public class ShopVO {
     public void setLocation(ParseGeoPoint location) {
 //        Log.i(TAG,"location.getLatitude: "+location.getLatitude()+"location.getLongitude:"+location.getLongitude());
         this.location = location;
+    }
+
+    public Number getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Number distance) {
+        Log.i(TAG,"setDistance: "+distance);
+        this.distance = distance;
+    }
+
+    public String getDistanceString() {
+        String returnString = null;
+
+        if(distance!=null){
+            if(distance.doubleValue()<1){
+                try{
+                    DecimalFormat format=new DecimalFormat("###");
+                    Double mDistance = ((Double)distance)*1000;
+                    returnString = format.format(mDistance);
+                    returnString = "~ "+ returnString+"m away";
+                }catch (Exception e){
+                    Log.e(TAG,"getDistanceString: Less than 1 km EXCEPTION: "+e.getMessage());
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    DecimalFormat format=new DecimalFormat("###,###,###.##");
+                    returnString = format.format(distance);
+                    returnString = "~ "+ returnString+"km away";
+                }catch (Exception e){
+                    Log.e(TAG,"getDistanceString: more than 1 km EXCEPTION: "+e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        }
+        return returnString;
     }
 }

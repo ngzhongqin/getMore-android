@@ -48,13 +48,14 @@ public class HomeWebService {
             i++;
         }
         if(geoPoint!=null){
-            params.put("location",geoPoint);
+            params.put("pGeoPoint",geoPoint);
+            Log.i(TAG,"set geoPoint: getLatitude"+geoPoint.getLatitude()+" Longitude: "+geoPoint.getLongitude());
         }
 
         if(sortByMember){
             params.put("sortBy","member");
         }else{
-            params.put("sortBy","location");
+            params.put("sortBy","distance");
         }
 
         params.put("search_terms",searchTermsJSON);
@@ -76,10 +77,12 @@ public class HomeWebService {
                         String short_desc = jsonHandler.getString(objects.get(i),"short_desc");
                         String small_pict_url = jsonHandler.getString(objects.get(i),"small_pict_url");
                         ParseGeoPoint location = jsonHandler.getGeoPoint(objects.get(i),"location");
-                        Number number1 = jsonHandler.getNumber( objects.get(i), "number");
+                        Number number1 = jsonHandler.getNumber( objects.get(i), "members");
+                        Number distance = jsonHandler.getNumber(objects.get(i), "distance");
                         ShopVO shopVO = new ShopVO(id,name,short_desc,small_pict_url);
                         shopVO.setNumberOfMembers(number1);
                         shopVO.setLocation(location);
+                        shopVO.setDistance(distance);
                         shopVOs.add(shopVO);
                         i++;
                     }
