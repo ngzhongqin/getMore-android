@@ -12,6 +12,17 @@ public class LinearLayoutHandler {
 
     public LinearLayoutHandler(){};
 
+    public LinearLayout set(View v, int resId){
+        LinearLayout linearLayout = null;
+        try{
+            linearLayout = (LinearLayout) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return linearLayout;
+    }
+
     public void setLinearLayoutVisible(LinearLayout linearLayout,boolean visible){
         if(visible){
             try {

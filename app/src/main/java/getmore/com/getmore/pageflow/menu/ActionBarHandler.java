@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import getmore.com.getmore.R;
+import getmore.com.getmore.util.assetHandler.AssetHandler;
 
 /**
  * Created by zhongqinng on 30/12/14.
@@ -22,6 +23,7 @@ public class ActionBarHandler {
     private ActionBarViewHolder actionBarViewHolder;
     private ActionBar actionBar;
     private ViewPager pager;
+    private AssetHandler assetHandler;
 
     public void setPager(ViewPager pager) {
         this.pager = pager;
@@ -41,6 +43,7 @@ public class ActionBarHandler {
         this.pager=pager;
         this.mActivity=mActivity;
         actionBarViewHolder = new ActionBarViewHolder();
+        assetHandler = new AssetHandler(mActivity);
 
     }
 
@@ -59,25 +62,31 @@ public class ActionBarHandler {
 
     private void set_home_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_u);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.home_btn,R.drawable.home_u);
+//            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_u);
         }else{
-            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_grey);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.home_btn,R.drawable.home_grey);
+//            actionBarViewHolder.home_btn.setImageResource(R.drawable.home_grey);
         }
     }
 
     private void set_friends_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_u);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.friends_btn,R.drawable.friends_u);
+//            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_u);
         }else{
-            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_grey);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.friends_btn,R.drawable.friends_grey);
+//            actionBarViewHolder.friends_btn.setImageResource(R.drawable.friends_grey);
         }
     }
 
     private void set_points_btn_selected(boolean selected){
         if(selected){
-            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_u);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.points_btn,R.drawable.points_u);
+//            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_u);
         }else{
-            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_grey);
+            assetHandler.imageButtonHandler.setImageButtonImageResource(actionBarViewHolder.points_btn,R.drawable.points_grey);
+//            actionBarViewHolder.points_btn.setImageResource(R.drawable.points_grey);
         }
     }
 
@@ -90,11 +99,19 @@ public class ActionBarHandler {
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayOptions(actionBar.DISPLAY_SHOW_CUSTOM);
         cView = mActivity.getLayoutInflater().inflate(R.layout.actionbar, null);
-        actionBarViewHolder.home_btn = (ImageButton) cView.findViewById(R.id.home_btn);
-        actionBarViewHolder.friends_btn = (ImageButton) cView.findViewById(R.id.friends_btn);
-        actionBarViewHolder.points_btn = (ImageButton) cView.findViewById(R.id.points_btn);
-        actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
-        actionBarViewHolder.spinner_placeholder = (LinearLayout) cView.findViewById(R.id.spinner_placeholder);
+
+        actionBarViewHolder.home_btn = assetHandler.imageButtonHandler.set(cView,R.id.home_btn);
+        actionBarViewHolder.friends_btn = assetHandler.imageButtonHandler.set(cView,R.id.friends_btn);
+        actionBarViewHolder.points_btn = assetHandler.imageButtonHandler.set(cView,R.id.points_btn);
+        actionBarViewHolder.user_id = assetHandler.textViewHandler.set(cView,R.id.user_id);
+        actionBarViewHolder.spinner_placeholder = assetHandler.linearLayoutHandler.set(cView,R.id.spinner_placeholder);
+
+
+//        actionBarViewHolder.home_btn = (ImageButton) cView.findViewById(R.id.home_btn);
+//        actionBarViewHolder.friends_btn = (ImageButton) cView.findViewById(R.id.friends_btn);
+//        actionBarViewHolder.points_btn = (ImageButton) cView.findViewById(R.id.points_btn);
+//        actionBarViewHolder.user_id = (TextView) cView.findViewById(R.id.user_id);
+//        actionBarViewHolder.spinner_placeholder = (LinearLayout) cView.findViewById(R.id.spinner_placeholder);
         setMenuButtonsWithViewPager();
 
         actionBar.setCustomView(cView);
@@ -157,8 +174,10 @@ public class ActionBarHandler {
 
     public void setActionBarHandlerAfterWebServiceCall(String user_id) {
         setActionBar();
-        actionBarViewHolder.spinner_placeholder.setVisibility(View.GONE);
-        actionBarViewHolder.user_id.setText("ID: "+user_id);
+        assetHandler.linearLayoutHandler.setLinearLayoutVisible( actionBarViewHolder.spinner_placeholder,false);
+        assetHandler.textViewHandler.setText(actionBarViewHolder.user_id,"ID: "+user_id);
+//        actionBarViewHolder.spinner_placeholder.setVisibility(View.GONE);
+//        actionBarViewHolder.user_id.setText("ID: "+user_id);
 
         actionBar.setCustomView(cView);
     }

@@ -12,6 +12,17 @@ public class FrameLayoutHandler {
 
     public FrameLayoutHandler(){};
 
+    public FrameLayout set(View v, int resId){
+        FrameLayout frameLayout = null;
+        try{
+            frameLayout = (FrameLayout) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return frameLayout;
+    }
+
     public void setFrameLayoutVisible(FrameLayout frameLayout,boolean visible){
         if(visible){
             try {

@@ -49,15 +49,23 @@ public class SearchShopResults {
         this.assetHandler = new AssetHandler(fragmentActivity);
         this.homeWebService=homeWebService;
 
-        viewHolder.search_box_container = (FrameLayout) v.findViewById(R.id.search_box_container);
-        viewHolder.search_hint_container = (LinearLayout) v.findViewById(R.id.search_hint_container);
-        viewHolder.search_btn = (ImageButton) v.findViewById(R.id.search_btn);
-        viewHolder.search_hint_btn = (ImageButton) v.findViewById(R.id.search_hint_btn);
-        viewHolder.search_shop_list = (LinearLayout) v.findViewById(R.id.search_shop_list);
-        viewHolder.search_shop_container = (LinearLayout) v.findViewById(R.id.search_shop_container);
-        viewHolder.search_title = (TextView) v.findViewById(R.id.search_title);
-        viewHolder.search_spinner_placeholder = (LinearLayout) v.findViewById(R.id.search_spinner_placeholder);
+//        viewHolder.search_box_container = (FrameLayout) v.findViewById(R.id.search_box_container);
+//        viewHolder.search_hint_container = (LinearLayout) v.findViewById(R.id.search_hint_container);
+//        viewHolder.search_btn = (ImageButton) v.findViewById(R.id.search_btn);
+//        viewHolder.search_hint_btn = (ImageButton) v.findViewById(R.id.search_hint_btn);
+//        viewHolder.search_shop_list = (LinearLayout) v.findViewById(R.id.search_shop_list);
+//        viewHolder.search_shop_container = (LinearLayout) v.findViewById(R.id.search_shop_container);
+//        viewHolder.search_title = (TextView) v.findViewById(R.id.search_title);
+//        viewHolder.search_spinner_placeholder = (LinearLayout) v.findViewById(R.id.search_spinner_placeholder);
 
+        viewHolder.search_hint_btn = assetHandler.imageButtonHandler.set(v,R.id.search_hint_btn);
+        viewHolder.search_btn = assetHandler.imageButtonHandler.set(v,R.id.search_btn);
+        viewHolder.search_title = assetHandler.textViewHandler.set(v,R.id.search_title);
+        viewHolder.search_spinner_placeholder = assetHandler.linearLayoutHandler.set(v,R.id.search_spinner_placeholder);
+        viewHolder.search_shop_container = assetHandler.linearLayoutHandler.set(v,R.id.search_shop_container);
+        viewHolder.search_shop_list = assetHandler.linearLayoutHandler.set(v,R.id.search_shop_list);
+        viewHolder.search_hint_container = assetHandler.linearLayoutHandler.set(v,R.id.search_hint_container);
+        viewHolder.search_box_container = assetHandler.frameLayoutHandler.set(v,R.id.search_box_container);
         viewHolder.search_edit_text = assetHandler.editTextHandler.set(v,R.id.search_edit_text);
 
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container,false);

@@ -12,6 +12,28 @@ public class TextViewHandler {
 
     public TextViewHandler(){};
 
+    public TextView set(View v, int resId){
+        TextView textView = null;
+        try{
+            textView = (TextView) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return textView;
+    }
+
+    public void setText(TextView v, String text){
+        if(v!=null&&text!=null) {
+            try {
+                v.setText(text);
+            } catch (Exception e) {
+                Log.e(TAG, "setText text: EXCEPTION: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void setTextViewVisible(TextView textView,boolean visible){
         if(visible){
             try {
