@@ -24,6 +24,8 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         LinearLayout btn_holder;
         SmartImageView top_banner_img;
         TextView name;
+        TextView address;
+        TextView hours;
     }
 
     @Override
@@ -46,6 +48,8 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         vh.btn_holder = ah.linearLayoutHandler.set(this,R.id.btn_holder);
         vh.top_banner_img = ah.smartImageViewHandler.set(this,R.id.top_banner_img);
         vh.name = ah.textViewHandler.set(this,R.id.name);
+        vh.address =ah.textViewHandler.set(this,R.id.address);
+        vh.hours=ah.textViewHandler.set(this,R.id.hours);
 
         ah.linearLayoutHandler.setVisible(vh.btn_holder,false);
     }
@@ -65,6 +69,12 @@ public class StoreFrontGuestActivity extends FragmentActivity {
             }
             if(shopVO.getName()!=null){
                 ah.textViewHandler.setText(vh.name,shopVO.getName());
+            }
+            if(shopVO.getAddress()!=null){
+                ah.textViewHandler.setText(vh.address,shopVO.getAddress());
+            }
+            if(shopVO.getHours()!=null){
+                ah.textViewHandler.setText(vh.hours,shopVO.getHours());
             }
         }
     }
