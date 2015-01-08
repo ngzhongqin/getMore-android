@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -22,6 +23,18 @@ public class FrameLayoutHandler {
         }
         return frameLayout;
     }
+
+    public FrameLayout set(Activity v, int resId){
+        FrameLayout frameLayout = null;
+        try{
+            frameLayout = (FrameLayout) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return frameLayout;
+    }
+
 
     public void setFrameLayoutVisible(FrameLayout frameLayout,boolean visible){
         if(visible){

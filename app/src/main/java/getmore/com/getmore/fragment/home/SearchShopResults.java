@@ -69,9 +69,9 @@ public class SearchShopResults {
         viewHolder.popular_btn = assetHandler.buttonHandler.set(v,R.id.popular_btn);
         viewHolder.closer_btn = assetHandler.buttonHandler.set(v,R.id.closer_btn);
 
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.sort_btn_container,false);
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.sort_btn_container, false);
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container,false);
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.search_spinner_placeholder, false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,false);
         setSearchButtonOnClickListener();
         setSearchHintButtonOnClickListener();
@@ -91,7 +91,7 @@ public class SearchShopResults {
                     get_shop_search(true);
                 }else {
                     assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, true);
-                    assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_hint_container, false);
+                    assetHandler.linearLayoutHandler.setVisible(viewHolder.search_hint_container, false);
                 }
             }
         });
@@ -103,7 +103,7 @@ public class SearchShopResults {
             public void onClick(final View v) {
                 Log.d(TAG, "setSearchHintButtonOnClickListener");
                 assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, true);
-                assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_hint_container, false);
+                assetHandler.linearLayoutHandler.setVisible(viewHolder.search_hint_container, false);
             }
         });
     }
@@ -137,7 +137,7 @@ public class SearchShopResults {
         assetHandler.linearLayoutHandler.removeAllViews(viewHolder.search_shop_list);
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,true);
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.search_spinner_placeholder, true);
         homeWebService.get_shop_search(getSearchTerms(),sortByMember,geoPoint);
         assetHandler.keyBoardHandler.hide_keyboard();
     }
@@ -165,9 +165,9 @@ public class SearchShopResults {
             i++;
         }
 
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.search_spinner_placeholder,false);
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.search_spinner_placeholder, false);
         //assetHandler.editTextHandler.clearText(viewHolder.search_edit_text);
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible(viewHolder.sort_btn_container,true);
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.sort_btn_container, true);
         Log.d(TAG,"create_search_shop_list end");
     }
 

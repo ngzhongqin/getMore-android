@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,32 +24,33 @@ public class LinearLayoutHandler {
         return linearLayout;
     }
 
-    public void setLinearLayoutVisible(LinearLayout linearLayout,boolean visible){
+    public LinearLayout set(Activity v, int resId){
+        LinearLayout linearLayout = null;
+        try{
+            linearLayout = (LinearLayout) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return linearLayout;
+    }
+
+    public void setVisible(LinearLayout linearLayout, boolean visible){
         if(visible){
             try {
                 linearLayout.setVisibility(View.VISIBLE);
             }catch (Exception e){
-                Log.e(TAG, "setLinearLayoutVisible View.VISIBLE EXCEPTION:" + e.getMessage());
+                Log.e(TAG, "setVisible View.VISIBLE EXCEPTION:" + e.getMessage());
                 e.printStackTrace();
             }
         }else {
             try {
                 linearLayout.setVisibility(View.GONE);
             }catch (Exception e){
-                Log.e(TAG, "setLinearLayoutVisible View.GONE EXCEPTION:" + e.getMessage());
+                Log.e(TAG, "setVisible View.GONE EXCEPTION:" + e.getMessage());
                 e.printStackTrace();
             }
         }
-    }
-
-    public boolean checkFrameLayoutVisible(LinearLayout layout) {
-        boolean returnBol = false;
-        if (layout != null) {
-            if (layout.getVisibility() == View.VISIBLE) {
-                returnBol = true;
-            }
-        }
-        return returnBol;
     }
 
     public void removeAllViews(LinearLayout layout) {

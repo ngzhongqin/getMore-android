@@ -15,6 +15,7 @@ public class AssetHandler {
     public KeyBoardHandler keyBoardHandler;
     public ImageViewHandler imageViewHandler;
     public ButtonHandler buttonHandler;
+    public SmartImageViewHandler smartImageViewHandler;
 
     public AssetHandler(FragmentActivity fragmentActivity){
         frameLayoutHandler =new FrameLayoutHandler();
@@ -25,5 +26,6 @@ public class AssetHandler {
         keyBoardHandler=new KeyBoardHandler(fragmentActivity);
         imageViewHandler=new ImageViewHandler();
         buttonHandler=new ButtonHandler();
+        smartImageViewHandler=new SmartImageViewHandler();
     }
 }

@@ -162,7 +162,7 @@ public class ActionBarHandler {
 
     public void setActionBarHandlerAfterWebServiceCall(String user_id) {
         setActionBar();
-        assetHandler.linearLayoutHandler.setLinearLayoutVisible( actionBarViewHolder.spinner_placeholder,false);
+        assetHandler.linearLayoutHandler.setVisible(actionBarViewHolder.spinner_placeholder, false);
         assetHandler.textViewHandler.setText(actionBarViewHolder.user_id,"ID: "+user_id);
 
         actionBar.setCustomView(cView);

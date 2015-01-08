@@ -67,5 +67,18 @@ public class JsonHandler {
         }
         return returnGeoPoint;
     }
+
+
+    public HashMap<String, Object> getHashMapStringObject(String text, HashMap<String, Object> result) {
+        HashMap<String,Object> returnHM = null;
+        if(result!=null){
+            if(text!=null){
+                if(!text.isEmpty()){
+                    returnHM = (HashMap<String, Object>) result.get(text);
+                }
+            }
+        }
+        return returnHM;
+    }
 }
 

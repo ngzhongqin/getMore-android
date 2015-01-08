@@ -21,6 +21,67 @@ public class ShopVO {
     private Number distance;
     private String distanceString;
 
+    private String address;
+    private String hours;
+    private String top_banner_url;
+    private String guest_promo_url;
+    private String tier1_item;
+    private Number tier1_point;
+    private String tier2_item;
+    private Number tier2_point;
+    private String tier3_item;
+    private Number tier3_point;
+    private String tier4_item;
+    private Number tier4_point;
+
+    public ShopVO(String id,
+                  String name,
+                  String address,
+                  String hours,
+                  String top_banner_url,
+                  String guest_promo_url,
+                  String tier1_item,
+                  Number tier1_point,
+                  String tier2_item,
+                  Number tier2_point,
+                  String tier3_item,
+                  Number tier3_point,
+                  String tier4_item,
+                  Number tier4_point){
+
+        this.id=id;
+        this.name=name;
+        this.address=address;
+        this.hours=hours;
+        this.top_banner_url=top_banner_url;
+        this.guest_promo_url=guest_promo_url;
+        this.tier1_item=tier1_item;
+        this.tier1_point=tier1_point;
+        this.tier2_item=tier2_item;
+        this.tier2_point=tier2_point;
+        this.tier3_item=tier3_item;
+        this.tier3_point=tier3_point;
+        this.tier4_item=tier4_item;
+        this.tier4_point=tier4_point;
+
+        Log.i(TAG,"ShopVO created: "
+                +" id: "+id
+                +" name: "+name
+                +" address: "+address
+                +" hours: "+hours
+                +" top_banner_url: "+top_banner_url
+                +" guest_promo_url: "+guest_promo_url
+                +" tier1_item: "+tier1_item
+                +" tier1_point: "+tier1_point
+                +" tier2_item: "+tier2_item
+                +" tier2_point: "+tier2_point
+                +" tier3_item: "+tier3_item
+                +" tier3_point: "+tier3_point
+                +" tier4_item: "+tier4_item
+                +" tier4_point: "+tier4_point
+        );
+    }
+
     public ShopVO(String id,
                   String name,
                   String short_desc,
@@ -142,5 +203,101 @@ public class ShopVO {
             }
         }
         return returnString;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public String getTop_banner_url() {
+        return top_banner_url;
+    }
+
+    public void setTop_banner_url(String top_banner_url) {
+        this.top_banner_url = top_banner_url;
+    }
+
+    public String getGuest_promo_url() {
+        return guest_promo_url;
+    }
+
+    public void setGuest_promo_url(String guest_promo_url) {
+        this.guest_promo_url = guest_promo_url;
+    }
+
+    public String getTier1_item() {
+        return tier1_item;
+    }
+
+    public void setTier1_item(String tier1_item) {
+        this.tier1_item = tier1_item;
+    }
+
+    public Number getTier1_point() {
+        return tier1_point;
+    }
+
+    public void setTier1_point(Number tier1_point) {
+        this.tier1_point = tier1_point;
+    }
+
+    public String getTier2_item() {
+        return tier2_item;
+    }
+
+    public void setTier2_item(String tier2_item) {
+        this.tier2_item = tier2_item;
+    }
+
+    public Number getTier2_point() {
+        return tier2_point;
+    }
+
+    public void setTier2_point(Number tier2_point) {
+        this.tier2_point = tier2_point;
+    }
+
+    public String getTier3_item() {
+        return tier3_item;
+    }
+
+    public void setTier3_item(String tier3_item) {
+        this.tier3_item = tier3_item;
+    }
+
+    public Number getTier3_point() {
+        return tier3_point;
+    }
+
+    public void setTier3_point(Number tier3_point) {
+        this.tier3_point = tier3_point;
+    }
+
+    public String getTier4_item() {
+        return tier4_item;
+    }
+
+    public void setTier4_item(String tier4_item) {
+        this.tier4_item = tier4_item;
+    }
+
+    public Number getTier4_point() {
+        return tier4_point;
+    }
+
+    public void setTier4_point(Number tier4_point) {
+        this.tier4_point = tier4_point;
     }
 }

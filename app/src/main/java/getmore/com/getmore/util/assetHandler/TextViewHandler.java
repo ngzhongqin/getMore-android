@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +14,17 @@ public class TextViewHandler {
     public TextViewHandler(){};
 
     public TextView set(View v, int resId){
+        TextView textView = null;
+        try{
+            textView = (TextView) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return textView;
+    }
+
+    public TextView set(Activity v, int resId){
         TextView textView = null;
         try{
             textView = (TextView) v.findViewById(resId);

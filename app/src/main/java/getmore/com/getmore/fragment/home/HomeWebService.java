@@ -95,32 +95,4 @@ public class HomeWebService {
             }
         });
     }
-/*
-    private Number getNumberOfMembers(ArrayList<HashMap<String, Object>> shop_membership_objects, String shop_id){
-        Number returnNumber = 0;
-            if(shop_id!=null){
-                if(shop_membership_objects!=null){
-                    int i = 0;
-                    int size = shop_membership_objects.size();
-                    while (i<size){
-                        if(shop_membership_objects.get(i)!=null){
-                            String shop_id_from_object = jsonHandler.getString(shop_membership_objects.get(i), "shopId");
-                            if(shop_id_from_object!=null){
-                                if(!shop_id_from_object.toString().isEmpty()){
-                                    if(shop_id_from_object.toString().equals(shop_id)){
-                                        Number number1 = jsonHandler.getNumber( shop_membership_objects.get(i), "number");
-                                        if(number1!=null){
-                                            return number1;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        i++;
-                    }
-                }
-            }
-        return returnNumber;
-    }
-    */
 }

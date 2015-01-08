@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,17 @@ public class ImageViewHandler {
     public ImageViewHandler(){};
 
     public ImageView set(View v, int resId){
+        ImageView imageView = null;
+        try{
+            imageView = (ImageView) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return imageView;
+    }
+
+    public ImageView set(Activity v, int resId){
         ImageView imageView = null;
         try{
             imageView = (ImageView) v.findViewById(resId);

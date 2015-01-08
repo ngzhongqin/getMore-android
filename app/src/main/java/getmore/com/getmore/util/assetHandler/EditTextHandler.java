@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,17 @@ public class EditTextHandler {
     public EditTextHandler(){};
 
     public EditText set(View v, int resId){
+        EditText editText = null;
+        try{
+            editText = (EditText) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return editText;
+    }
+
+    public EditText set(Activity v, int resId){
         EditText editText = null;
         try{
             editText = (EditText) v.findViewById(resId);

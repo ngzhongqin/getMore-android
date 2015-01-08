@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,6 +16,17 @@ public class ImageButtonHandler {
     }
 
     public ImageButton set(View v, int resId){
+        ImageButton imageButton = null;
+        try{
+            imageButton = (ImageButton) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return imageButton;
+    }
+
+    public ImageButton set(Activity v, int resId){
         ImageButton imageButton = null;
         try{
             imageButton = (ImageButton) v.findViewById(resId);

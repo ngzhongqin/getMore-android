@@ -1,5 +1,6 @@
 package getmore.com.getmore.util.assetHandler;
 
+import android.app.Activity;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,17 @@ public class ButtonHandler {
     public ButtonHandler(){};
 
     public Button set(View v, int resId){
+        Button button = null;
+        try{
+            button = (Button) v.findViewById(resId);
+        }catch (Exception e){
+            Log.e(TAG,"set resId:"+resId+" EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return button;
+    }
+
+    public Button set(Activity v, int resId){
         Button button = null;
         try{
             button = (Button) v.findViewById(resId);
