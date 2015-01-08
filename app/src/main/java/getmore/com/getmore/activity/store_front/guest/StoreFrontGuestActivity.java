@@ -26,6 +26,15 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         TextView name;
         TextView address;
         TextView hours;
+        SmartImageView guest_promo_img;
+        TextView tier1_name;
+        TextView tier1_point;
+        TextView tier2_name;
+        TextView tier2_point;
+        TextView tier3_name;
+        TextView tier3_point;
+        TextView tier4_name;
+        TextView tier4_point;
     }
 
     @Override
@@ -50,6 +59,15 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         vh.name = ah.textViewHandler.set(this,R.id.name);
         vh.address =ah.textViewHandler.set(this,R.id.address);
         vh.hours=ah.textViewHandler.set(this,R.id.hours);
+        vh.guest_promo_img=ah.smartImageViewHandler.set(this,R.id.guest_promo_img);
+        vh.tier1_name=ah.textViewHandler.set(this,R.id.tier1_name);
+        vh.tier1_point=ah.textViewHandler.set(this,R.id.tier1_point);
+        vh.tier2_name=ah.textViewHandler.set(this,R.id.tier2_name);
+        vh.tier2_point=ah.textViewHandler.set(this,R.id.tier2_point);
+        vh.tier3_name=ah.textViewHandler.set(this,R.id.tier3_name);
+        vh.tier3_point=ah.textViewHandler.set(this,R.id.tier3_point);
+        vh.tier4_name=ah.textViewHandler.set(this,R.id.tier4_name);
+        vh.tier4_point=ah.textViewHandler.set(this,R.id.tier4_point);
 
         ah.linearLayoutHandler.setVisible(vh.btn_holder,false);
     }
@@ -76,6 +94,35 @@ public class StoreFrontGuestActivity extends FragmentActivity {
             if(shopVO.getHours()!=null){
                 ah.textViewHandler.setText(vh.hours,shopVO.getHours());
             }
+            if(shopVO.getGuest_promo_url()!=null){
+                ah.smartImageViewHandler.setImageURL(vh.guest_promo_img,shopVO.getGuest_promo_url());
+            }
+            if(shopVO.getTier1_item()!=null){
+                ah.textViewHandler.setText(vh.tier1_name,"~ "+shopVO.getTier1_item());
+            }
+            if(shopVO.getTier1_point_string()!=null){
+                ah.textViewHandler.setText(vh.tier1_point,shopVO.getTier1_point_string());
+            }
+            if(shopVO.getTier2_item()!=null){
+                ah.textViewHandler.setText(vh.tier2_name,"~ "+shopVO.getTier2_item());
+            }
+            if(shopVO.getTier2_point_string()!=null){
+                ah.textViewHandler.setText(vh.tier2_point,shopVO.getTier2_point_string());
+            }
+            if(shopVO.getTier3_item()!=null){
+                ah.textViewHandler.setText(vh.tier3_name,"~ "+shopVO.getTier3_item());
+            }
+            if(shopVO.getTier3_point_string()!=null){
+                ah.textViewHandler.setText(vh.tier3_point,shopVO.getTier3_point_string());
+            }
+            if(shopVO.getTier4_item()!=null){
+                ah.textViewHandler.setText(vh.tier4_name,"~ "+shopVO.getTier4_item());
+            }
+            if(shopVO.getTier4_point_string()!=null){
+                ah.textViewHandler.setText(vh.tier4_point,shopVO.getTier4_point_string());
+            }
+
+
         }
     }
 

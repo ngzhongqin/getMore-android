@@ -33,6 +33,7 @@ public class ShopVO {
     private Number tier3_point;
     private String tier4_item;
     private Number tier4_point;
+    private String tier1_point_string;
 
     public ShopVO(String id,
                   String name,
@@ -299,5 +300,35 @@ public class ShopVO {
 
     public void setTier4_point(Number tier4_point) {
         this.tier4_point = tier4_point;
+    }
+
+    public String getTier1_point_string() {
+        return to_point_string(tier1_point);
+    }
+
+    public String getTier2_point_string() {
+        return to_point_string(tier2_point);
+    }
+
+    public String getTier3_point_string() {
+        return to_point_string(tier3_point);
+    }
+
+    public String getTier4_point_string() {
+        return to_point_string(tier4_point);
+    }
+
+    private String to_point_string(Number number){
+        String rtnString = null;
+        if(tier1_point!=null){
+            try{
+                Number point_number = number.intValue();
+                rtnString = point_number.toString()+ " pts";
+            }catch (Exception e){
+                Log.e(TAG,"getTier1_point_string EXCEPTION: "+e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return rtnString;
     }
 }
