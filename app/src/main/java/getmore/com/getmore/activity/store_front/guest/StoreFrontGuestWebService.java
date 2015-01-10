@@ -61,4 +61,20 @@ public class StoreFrontGuestWebService {
             }
         });
     }
+
+    public void join_as_member(String shop_id) {
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("shop_id",shop_id);
+
+        ParseCloud.callFunctionInBackground("cx_join_as_member", params, new FunctionCallback<HashMap<String, Object>>() {
+            public void done(HashMap<String, Object> result, ParseException e) {
+                if (e == null) {
+                    Log.i(TAG, "cx_join_as_member: okay");
+
+                } else {
+                    Log.i(TAG, "cx_join_as_member: EXCEPTION: " + e.getMessage());
+                }
+            }
+        });
+    }
 }

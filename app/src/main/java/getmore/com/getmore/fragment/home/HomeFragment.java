@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import getmore.com.getmore.R;
+import getmore.com.getmore.fragment.home.search.SearchWebService;
+import getmore.com.getmore.fragment.home.search.SearchShopResults;
 import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
@@ -18,7 +20,7 @@ public class HomeFragment extends Fragment {
     //private ViewHolder viewHolder;
     private View v;
     private AssetHandler assetHandler;
-    private HomeWebService homeWebService;
+    private SearchWebService searchWebService;
     private SearchShopResults searchShopResults;
 
     public static final HomeFragment newInstance(String message)
@@ -35,8 +37,8 @@ public class HomeFragment extends Fragment {
         String message = getArguments().getString(EXTRA_MESSAGE);
         v = inflater.inflate(R.layout.home_f, container, false);
         assetHandler = new AssetHandler(getActivity());
-        homeWebService=new HomeWebService(this);
-        searchShopResults=new SearchShopResults(getActivity(),v,homeWebService);
+        searchWebService =new SearchWebService(this);
+        searchShopResults=new SearchShopResults(getActivity(),v, searchWebService);
 
         return v;
     }

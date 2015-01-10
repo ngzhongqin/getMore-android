@@ -1,4 +1,4 @@
-package getmore.com.getmore.fragment.home;
+package getmore.com.getmore.fragment.home.search;
 
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -30,7 +30,7 @@ public class SearchShopResults {
     private View v;
     private ViewHolder viewHolder;
     private AssetHandler assetHandler;
-    private HomeWebService homeWebService;
+    private SearchWebService searchWebService;
     private SearchShopAdapter searchShopAdapter;
     private ArrayList<ShopVO> searchShopVOs;
 
@@ -49,12 +49,12 @@ public class SearchShopResults {
         Button closer_btn;
     }
 
-    public SearchShopResults(FragmentActivity fragmentActivity, View v,HomeWebService homeWebService){
+    public SearchShopResults(FragmentActivity fragmentActivity, View v,SearchWebService searchWebService){
         this.fragmentActivity=fragmentActivity;
         this.v=v;
         this.viewHolder=new ViewHolder();
         this.assetHandler = new AssetHandler(fragmentActivity);
-        this.homeWebService=homeWebService;
+        this.searchWebService = searchWebService;
 
         viewHolder.search_hint_btn = assetHandler.imageButtonHandler.set(v,R.id.search_hint_btn);
         viewHolder.search_btn = assetHandler.imageButtonHandler.set(v,R.id.search_btn);
@@ -138,7 +138,7 @@ public class SearchShopResults {
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container, false);
         assetHandler.textViewHandler.setTextViewVisible(viewHolder.search_title,true);
         assetHandler.linearLayoutHandler.setVisible(viewHolder.search_spinner_placeholder, true);
-        homeWebService.get_shop_search(getSearchTerms(),sortByMember,geoPoint);
+        searchWebService.get_shop_search(getSearchTerms(),sortByMember,geoPoint);
         assetHandler.keyBoardHandler.hide_keyboard();
     }
 

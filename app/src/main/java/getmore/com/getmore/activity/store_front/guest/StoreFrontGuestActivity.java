@@ -3,7 +3,9 @@ package getmore.com.getmore.activity.store_front.guest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +37,7 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         TextView tier3_point;
         TextView tier4_name;
         TextView tier4_point;
+        Button join_btn;
     }
 
     @Override
@@ -68,6 +71,7 @@ public class StoreFrontGuestActivity extends FragmentActivity {
         vh.tier3_point=ah.textViewHandler.set(this,R.id.tier3_point);
         vh.tier4_name=ah.textViewHandler.set(this,R.id.tier4_name);
         vh.tier4_point=ah.textViewHandler.set(this,R.id.tier4_point);
+        vh.join_btn=ah.buttonHandler.set(this,R.id.join_btn);
 
         ah.linearLayoutHandler.setVisible(vh.btn_holder,false);
     }
@@ -122,6 +126,12 @@ public class StoreFrontGuestActivity extends FragmentActivity {
                 ah.textViewHandler.setText(vh.tier4_point,shopVO.getTier4_point_string());
             }
 
+            vh.join_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    storeFrontGuestWebService.join_as_member(shopVO.getId());
+                }
+            });
 
         }
     }

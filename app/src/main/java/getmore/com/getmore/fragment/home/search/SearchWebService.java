@@ -1,4 +1,4 @@
-package getmore.com.getmore.fragment.home;
+package getmore.com.getmore.fragment.home.search;
 
 import android.util.Log;
 
@@ -14,19 +14,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import getmore.com.getmore.fragment.home.HomeFragment;
 import getmore.com.getmore.util.JsonHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 /**
  * Created by zhongqinng on 1/1/15.
  */
-public class HomeWebService {
+public class SearchWebService {
 
     private static final String TAG = "HomeWebService";
     private HomeFragment homeFragment;
     private JsonHandler jsonHandler;
 
-    public HomeWebService(HomeFragment homeFragment){
+    public SearchWebService(HomeFragment homeFragment){
         this.homeFragment=homeFragment;
         this.jsonHandler=new JsonHandler();
     }

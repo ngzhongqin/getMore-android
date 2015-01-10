@@ -1,4 +1,4 @@
-package getmore.com.getmore.fragment.home;
+package getmore.com.getmore.fragment.home.search;
 
 import android.content.Context;
 import android.content.Intent;
