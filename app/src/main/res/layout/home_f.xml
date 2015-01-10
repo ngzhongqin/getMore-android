@@ -138,6 +138,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
+                android:id="@+id/fav_shop_container"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/fav_spinner_placeholder"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        style="?android:attr/progressBarStyleSmall"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/fav_shop_list"
+                    android:layout_height="wrap_content"></LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:id="@+id/search_shop_container"
                 android:layout_height="wrap_content">
 

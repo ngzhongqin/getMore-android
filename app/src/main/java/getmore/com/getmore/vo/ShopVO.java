@@ -34,6 +34,7 @@ public class ShopVO {
     private String tier4_item;
     private Number tier4_point;
     private String tier1_point_string;
+    private Number points;
 
     public ShopVO(String id,
                   String name,
@@ -330,5 +331,23 @@ public class ShopVO {
             }
         }
         return rtnString;
+    }
+
+    public void setPoints(Number points) {
+        Log.i(TAG,"setPoints: "+points);
+        this.points = points;
+    }
+
+    public String getPointsString(){
+        String returnString = null;
+        if(this.points!=null){
+            try{
+                returnString = "~"+points.intValue() + " pts";
+            }catch (Exception e){
+                Log.e(TAG,"getPointsString: EXCEPTION: "+e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return returnString;
     }
 }

@@ -34,6 +34,16 @@ public class SearchShopResults {
     private SearchShopAdapter searchShopAdapter;
     private ArrayList<ShopVO> searchShopVOs;
 
+    public void set_search_hint_container_visible(boolean visible) {
+        if(viewHolder!=null && assetHandler!=null){
+            if(viewHolder.search_hint_container!=null){
+                if(assetHandler.linearLayoutHandler!=null){
+                    assetHandler.linearLayoutHandler.setVisible(viewHolder.search_hint_container,visible);
+                }
+            }
+        }
+    }
+
     class ViewHolder{
         FrameLayout search_box_container;
         LinearLayout search_hint_container;
@@ -69,6 +79,7 @@ public class SearchShopResults {
         viewHolder.popular_btn = assetHandler.buttonHandler.set(v,R.id.popular_btn);
         viewHolder.closer_btn = assetHandler.buttonHandler.set(v,R.id.closer_btn);
 
+        assetHandler.linearLayoutHandler.setVisible(viewHolder.search_hint_container,false);
         assetHandler.linearLayoutHandler.setVisible(viewHolder.sort_btn_container, false);
         assetHandler.frameLayoutHandler.setFrameLayoutVisible(viewHolder.search_box_container,false);
         assetHandler.linearLayoutHandler.setVisible(viewHolder.search_spinner_placeholder, false);
