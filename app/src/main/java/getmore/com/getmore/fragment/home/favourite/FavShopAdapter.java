@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import getmore.com.getmore.R;
-import getmore.com.getmore.activity.store_front.guest.StoreFrontGuestActivity;
+import getmore.com.getmore.activity.store_front.member.StoreFrontMemberActivity;
 import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
@@ -68,7 +68,7 @@ public class FavShopAdapter extends ArrayAdapter<ShopVO> {
             assetHandler.textViewHandler.setText(vh.name, getItem(position).getName());
             assetHandler.textViewHandler.setText(vh.points,getItem(position).getPointsString());
             assetHandler.textViewHandler.setText(vh.short_desc, getItem(position).getShort_desc());
-            assetHandler.imageViewHandler.setRoundImage(vh.photo,getItem(position).getSmall_pict_url());
+            assetHandler.imageViewHandler.setRoundImage(vh.photo, getItem(position).getSmall_pict_url());
             vh.shop_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
@@ -82,7 +82,7 @@ public class FavShopAdapter extends ArrayAdapter<ShopVO> {
     }
 
     private void navigator_to_store_guest(String shop_id){
-        Intent myIntent = new Intent(mActivity, StoreFrontGuestActivity.class);
+        Intent myIntent = new Intent(mActivity, StoreFrontMemberActivity.class);
         myIntent.putExtra("shop_id", shop_id); //Optional parameters
         mActivity.startActivity(myIntent);
     }

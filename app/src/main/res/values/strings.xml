@@ -15,5 +15,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_store_front_guest">StoreFrontGuestActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_store_front_member">StoreFrontMemberActivity</string>
 
 </resources>

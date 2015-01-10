@@ -45,6 +45,11 @@
             android:label="@string/title_activity_store_front_guest"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.store_front.member.StoreFrontMemberActivity"
+            android:label="@string/title_activity_store_front_member"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
