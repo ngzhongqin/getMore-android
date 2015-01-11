@@ -27,6 +27,11 @@ public class FavouriteShopResults {
     private ViewHolder vh;
     private ArrayList<ShopVO> shopVOs;
 
+    public void set_spinner_visible(boolean visible) {
+        ah.linearLayoutHandler.setVisible(vh.fav_spinner_placeholder,visible);
+
+    }
+
     class ViewHolder{
         LinearLayout fav_shop_container;
         LinearLayout fav_shop_list;

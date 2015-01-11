@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
 
     public void set_search_hint_container_visible(boolean visible){
         searchShopResults.set_search_hint_container_visible(visible);
+        favouriteShopResults.set_spinner_visible(!visible);
     }
 }
 
