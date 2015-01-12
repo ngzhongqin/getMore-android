@@ -49,8 +49,9 @@ public class StoreFrontGuestWebService {
                     Number tier4_point = jsonHandler.getNumber(shop,"tier4_point");
 
                     ShopVO shopVO = new ShopVO(id,name,address,hours,top_banner_url,
-                            guest_promo_url,tier1_item,tier1_point,tier2_item,tier2_point,
+                            tier1_item,tier1_point,tier2_item,tier2_point,
                             tier3_item,tier3_point,tier4_item,tier4_point);
+                    shopVO.setGuest_promo_url(guest_promo_url);
 
 
                     mActivity.setShopVO(shopVO);

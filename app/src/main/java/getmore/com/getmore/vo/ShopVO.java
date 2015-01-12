@@ -33,15 +33,15 @@ public class ShopVO {
     private Number tier3_point;
     private String tier4_item;
     private Number tier4_point;
-    private String tier1_point_string;
     private Number points;
+    private String member_promo_url;
+    private String member_promo_text;
 
     public ShopVO(String id,
                   String name,
                   String address,
                   String hours,
                   String top_banner_url,
-                  String guest_promo_url,
                   String tier1_item,
                   Number tier1_point,
                   String tier2_item,
@@ -56,7 +56,6 @@ public class ShopVO {
         this.address=address;
         this.hours=hours;
         this.top_banner_url=top_banner_url;
-        this.guest_promo_url=guest_promo_url;
         this.tier1_item=tier1_item;
         this.tier1_point=tier1_point;
         this.tier2_item=tier2_item;
@@ -72,7 +71,6 @@ public class ShopVO {
                 +" address: "+address
                 +" hours: "+hours
                 +" top_banner_url: "+top_banner_url
-                +" guest_promo_url: "+guest_promo_url
                 +" tier1_item: "+tier1_item
                 +" tier1_point: "+tier1_point
                 +" tier2_item: "+tier2_item
@@ -349,5 +347,23 @@ public class ShopVO {
             }
         }
         return returnString;
+    }
+
+    public void setMember_promo_url(String member_promo_url) {
+        Log.i(TAG,"setMember_promo_url: "+member_promo_url);
+        this.member_promo_url=member_promo_url;
+    }
+
+    public String getMember_promo_url() {
+        return member_promo_url;
+    }
+
+    public void setMember_promo_text(String member_promo_text) {
+        Log.i(TAG,"setMember_promo_text: "+member_promo_text);
+        this.member_promo_text=member_promo_text;
+    }
+
+    public String getMember_promo_text() {
+        return member_promo_text;
     }
 }

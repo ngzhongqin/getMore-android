@@ -106,7 +106,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:gravity="end"
-                android:text="How we are different ~"
+                android:text="What's happening ~"
                 android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:padding="10dp"
@@ -117,10 +117,22 @@
                 android:layout_height="wrap_content">
 
                 <com.loopj.android.image.SmartImageView
-                    android:id="@+id/guest_promo_img"
+                    android:id="@+id/member_promo_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"/>
+
+                <TextView
+                    android:id="@+id/member_promo_text"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/member_promo_img"
+                    android:layout_alignBottom="@+id/member_promo_img"/>
 
             </RelativeLayout>
 

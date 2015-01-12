@@ -3,6 +3,7 @@ package getmore.com.getmore.activity.store_front.member;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import getmore.com.getmore.util.assetHandler.AssetHandler;
 import getmore.com.getmore.vo.ShopVO;
 
 public class StoreFrontMemberActivity extends FragmentActivity {
+    private static final String TAG = "StoreFrontMemberActivity";
     private StoreFrontMemberWebService storeFrontMemberWebService;
     private ShopVO shopVO;
     private AssetHandler ah;
@@ -27,7 +29,8 @@ public class StoreFrontMemberActivity extends FragmentActivity {
         TextView name;
         TextView address;
         TextView hours;
-        SmartImageView guest_promo_img;
+        SmartImageView member_promo_img;
+        TextView member_promo_text;
         TextView tier1_name;
         TextView tier1_point;
         TextView tier2_name;
@@ -55,13 +58,14 @@ public class StoreFrontMemberActivity extends FragmentActivity {
 
     public void initialise_assets(){
         vh = new ViewHolder();
-//        vh.spinner_placeholder = ah.linearLayoutHandler.set(this,R.id.spinner_placeholder);
-//        vh.btn_holder = ah.linearLayoutHandler.set(this,R.id.btn_holder);
-//        vh.top_banner_img = ah.smartImageViewHandler.set(this,R.id.top_banner_img);
-//        vh.name = ah.textViewHandler.set(this,R.id.name);
-//        vh.address =ah.textViewHandler.set(this,R.id.address);
-//        vh.hours=ah.textViewHandler.set(this,R.id.hours);
-//        vh.guest_promo_img=ah.smartImageViewHandler.set(this,R.id.guest_promo_img);
+        vh.spinner_placeholder = ah.linearLayoutHandler.set(this,R.id.spinner_placeholder);
+        vh.btn_holder = ah.linearLayoutHandler.set(this,R.id.btn_holder);
+        vh.top_banner_img = ah.smartImageViewHandler.set(this,R.id.top_banner_img);
+        vh.name = ah.textViewHandler.set(this,R.id.name);
+        vh.address =ah.textViewHandler.set(this,R.id.address);
+        vh.hours=ah.textViewHandler.set(this,R.id.hours);
+        vh.member_promo_img=ah.smartImageViewHandler.set(this,R.id.member_promo_img);
+        vh.member_promo_text=ah.textViewHandler.set(this,R.id.member_promo_text);
 //        vh.tier1_name=ah.textViewHandler.set(this,R.id.tier1_name);
 //        vh.tier1_point=ah.textViewHandler.set(this,R.id.tier1_point);
 //        vh.tier2_name=ah.textViewHandler.set(this,R.id.tier2_name);
@@ -77,29 +81,33 @@ public class StoreFrontMemberActivity extends FragmentActivity {
 
     public void setShopVO(ShopVO shopVO) {
         this.shopVO = shopVO;
-//        ah.linearLayoutHandler.setVisible(vh.spinner_placeholder, false);
-//        ah.linearLayoutHandler.setVisible(vh.btn_holder, true);
+        ah.linearLayoutHandler.setVisible(vh.spinner_placeholder, false);
+        ah.linearLayoutHandler.setVisible(vh.btn_holder, true);
 
         set_asset();
     }
 
     private void set_asset(){
         if(shopVO!=null){
-//            if(shopVO.getTop_banner_url()!=null){
-//                ah.smartImageViewHandler.setImageURL(vh.top_banner_img,shopVO.getTop_banner_url());
-//            }
-//            if(shopVO.getName()!=null){
-//                ah.textViewHandler.setText(vh.name,shopVO.getName());
-//            }
-//            if(shopVO.getAddress()!=null){
-//                ah.textViewHandler.setText(vh.address,shopVO.getAddress());
-//            }
-//            if(shopVO.getHours()!=null){
-//                ah.textViewHandler.setText(vh.hours,shopVO.getHours());
-//            }
-//            if(shopVO.getGuest_promo_url()!=null){
-//                ah.smartImageViewHandler.setImageURL(vh.guest_promo_img,shopVO.getGuest_promo_url());
-//            }
+            if(shopVO.getTop_banner_url()!=null){
+                ah.smartImageViewHandler.setImageURL(vh.top_banner_img,shopVO.getTop_banner_url());
+            }
+            if(shopVO.getName()!=null){
+                ah.textViewHandler.setText(vh.name,shopVO.getName());
+            }
+            if(shopVO.getAddress()!=null){
+                ah.textViewHandler.setText(vh.address,shopVO.getAddress());
+            }
+            if(shopVO.getHours()!=null){
+                ah.textViewHandler.setText(vh.hours,shopVO.getHours());
+            }
+            if(shopVO.getMember_promo_url()!=null){
+                Log.i(TAG,"getGuest_promo_url: "+shopVO.getMember_promo_url());
+                ah.smartImageViewHandler.setImageURL(vh.member_promo_img,shopVO.getMember_promo_url());
+            }
+            if(shopVO.getMember_promo_text()!=null){
+                ah.textViewHandler.setText(vh.member_promo_text,shopVO.getMember_promo_text());
+            }
 //            if(shopVO.getTier1_item()!=null){
 //                ah.textViewHandler.setText(vh.tier1_name,"~ "+shopVO.getTier1_item());
 //            }
