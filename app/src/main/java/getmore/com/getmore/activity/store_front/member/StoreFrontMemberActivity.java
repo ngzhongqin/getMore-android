@@ -31,6 +31,7 @@ public class StoreFrontMemberActivity extends FragmentActivity {
         TextView hours;
         SmartImageView member_promo_img;
         TextView member_promo_text;
+        LinearLayout news_list;
         TextView tier1_name;
         TextView tier1_point;
         TextView tier2_name;
@@ -66,6 +67,7 @@ public class StoreFrontMemberActivity extends FragmentActivity {
         vh.hours=ah.textViewHandler.set(this,R.id.hours);
         vh.member_promo_img=ah.smartImageViewHandler.set(this,R.id.member_promo_img);
         vh.member_promo_text=ah.textViewHandler.set(this,R.id.member_promo_text);
+        vh.news_list=ah.linearLayoutHandler.set(this,R.id.news_list);
 //        vh.tier1_name=ah.textViewHandler.set(this,R.id.tier1_name);
 //        vh.tier1_point=ah.textViewHandler.set(this,R.id.tier1_point);
 //        vh.tier2_name=ah.textViewHandler.set(this,R.id.tier2_name);

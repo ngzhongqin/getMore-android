@@ -5,6 +5,7 @@ import android.util.Log;
 import com.parse.ParseGeoPoint;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * Created by zhongqinng on 2/1/15.
@@ -36,6 +37,8 @@ public class ShopVO {
     private Number points;
     private String member_promo_url;
     private String member_promo_text;
+
+    private ArrayList<NewsItemVO> newsItemVOArrayList;
 
     public ShopVO(String id,
                   String name,
@@ -365,5 +368,13 @@ public class ShopVO {
 
     public String getMember_promo_text() {
         return member_promo_text;
+    }
+
+    public ArrayList<NewsItemVO> getNewsItemVOArrayList() {
+        return newsItemVOArrayList;
+    }
+
+    public void setNewsItemVOArrayList(ArrayList<NewsItemVO> newsItemVOArrayList) {
+        this.newsItemVOArrayList = newsItemVOArrayList;
     }
 }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.parse.ParseGeoPoint;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -79,6 +80,19 @@ public class JsonHandler {
             }
         }
         return returnHM;
+    }
+
+    public ArrayList<HashMap<String, Object>> getArrayList(String text, HashMap<String, Object> hm){
+        Log.i(TAG,"getArrayList: text:"+text);
+        ArrayList<HashMap<String, Object>> objects = null;
+        try {
+            objects = (ArrayList<HashMap<String, Object>>) hm.get(text);
+        }catch (Exception e){
+            Log.e(TAG,"getArrayList: EXCEPTION: "+e.getMessage());
+            e.printStackTrace();
+        }
+
+        return objects;
     }
 }
 
