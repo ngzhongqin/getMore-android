@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,8 +12,11 @@ import android.widget.TextView;
 
 import com.loopj.android.image.SmartImageView;
 
+import java.util.ArrayList;
+
 import getmore.com.getmore.R;
 import getmore.com.getmore.util.assetHandler.AssetHandler;
+import getmore.com.getmore.vo.NewsItemVO;
 import getmore.com.getmore.vo.ShopVO;
 
 public class StoreFrontMemberActivity extends FragmentActivity {
@@ -142,8 +146,29 @@ public class StoreFrontMemberActivity extends FragmentActivity {
 //                }
 //            });
 
+            create_news_list(shopVO.getNewsItemVOArrayList());
+
         }
     }
 
+    public void create_news_list(ArrayList<NewsItemVO> newsArrayList){
+        Log.d(TAG, "create_news_list start");
+        if(newsArrayList!=null) {
+            ah.linearLayoutHandler.removeAllViews(vh.news_list);
+            NewsItemAdapter newsItemAdapter = new NewsItemAdapter(this, this, R.id.store_front_member_i_news_item_panel_content);
+            for (NewsItemVO item : this.shopVO.getNewsItemVOArrayList()) {
+                newsItemAdapter.add(item);
+            }
+
+            int i = 0;
+            int size = newsItemAdapter.getCount();
+            while (i < size) {
+                View itemView = newsItemAdapter.getView(i, null, null);
+                vh.news_list.addView(itemView);
+                i++;
+            }
+        }
+        Log.d(TAG,"create_news_list end");
+    }
 
 }
